@@ -1,0 +1,34 @@
+Etapa 2 (REACT):
+*** Consideraciones generales
+
+Para la segunda etapa del proyecto se deben seguir las mismas especificaciones que en la primera. Se permiten cambios en los estilos, agregado de elementos y rediseño completo siempre y cuando se cumplan con los requisitos para ambas etapas.
+
+En cuanto al funcionamiento del sitio, se debe crear una SPA con REACT. Debe usar fetch() o axios con async/await para las conexiones asincrónicas con el servidor (mockapi.io). 
+
+Se deben brindar feedbacks para todas las acciones que realice el usuario, y se pueden agregar ayudas contextuales como atributos title o mensajes emergentes para que el usuario comprenda lo que está sucediendo. Se debe tener en cuenta las distintas resoluciones de pantalla y tipos de dispositivo, y acomodar los elementos apropiadamente en todas ellas.
+
+*** Descripción de lo que se debe desarrollar en esta segunda etapa
+
+El sitio web a desarrollar tendrá un botón de carrito en el header que mostrará un modal con el listado de productos que se hayan agregado al carrito. El modal se cerrará al presionar nuevamente en el botón del carrito, la por de cierre incorporada dentro del modal, la tecla ESC del teclado o al hacer clic en cualquier zona fuera del modal. Dentro del modal se mostrarán los productos que hayan sido agregados al carrito (leídos del localStorage y React context) a partir de las cards. Cada producto agregado al modal mostrará su foto, nombre, precio, cantidad y subtotal. Adicionalmente, se podrán agregar botones para sumar o restar la cantidad o editar directamente el número de unidades.
+
+Todas las vistas serán gestionadas con React Router y la "home" mostrará el listado de cards generadas de forma automatica con REACT, que permitan agregar el producto que se detalla en ella al carrito. Al hacerlo, se deberá informar al usuario con un mensaje que se agregó el producto al carrito y se adicionará el producto al modal del carrito como uno nuevo, si no existía previamente.
+
+En la vista de alta, se deberá validar el nombre, precio, stock, marca y categoría del producto. Además, cada campo deberá informar los errores de validación al perder el foco y si se intenta enviar el formulario y al menos un campo no cumple con los requisitos, se mostrarán los errores correspondientes y el formulario no se enviará. Solo se permitirá el envío de los datos si todos los campos fueron validados exitosamente.
+
+
+* Sección "Home"
+Se mostrará un listado de cards de los productos obtenidos del context de productos y se mostraran para que los usuarios puedan interactuar con ellas y agregar el producto al carrito.
+Cada card tendrá un botón para agregar el producto al carrito y se mostrará un mensaje no invasivo al usuario cuando se agregue.
+Al agregarse un producto al carrito, se adicionará al modal del carrito como uno nuevo y si ya existía, se incrementará la cantidad de unidades sin repetir el producto.
+Se pueden agregar elementos interactivos a las cards de forma optativa, como descripciones largas del producto o fotos adicionales.
+
+* Sección "Alta"
+El formulario definido deberá contar con las validaciones detalladas para los siguientes campos: nombre, precio, stock, marca, categoría, descripción corta, descripción larga, envío sin cargo, edad desde, edad hasta, y foto.
+Cada campo deberá informar si tiene errores de validación al perder el foco y al intentar enviar el formulario.
+Si al menos un campo no cumple con los requisitos, el formulario no deberá enviarse y cada campo deberá mostrar los errores correspondientes.
+Solo se permitirá el envío de los datos si todos los campos fueron validados exitosamente.
+Se mostrará al usuario qué tipo de validaciones se están realizando para que sepa qué correcciones debe realizar al completar el formulario.
+Se pueden agregar otros campos al formulario si se desea.
+
+* Sección "Contacto"
+El formulario de contacto deberá tener el mismo comportamiento que el formulario de Alta y se podrán agregar otros campos al formulario si se desea. Los campos requeridos son: nombre, email y comentarios.

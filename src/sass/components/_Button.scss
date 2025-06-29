@@ -1,0 +1,73 @@
+@use "sass:color"; // da errores sin esto
+
+@use '../utils/variables' as *; /// sin esto no me toma las variables
+
+.btn {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    &__primary {
+        
+        background-color: $primary-color; // modificado por obsolecencia
+        &:hover{
+            
+            background-color: $secondary-color;
+            color: $primary-color;
+        }
+
+        &.btn__outline {
+            
+            color: $black;
+            background-color: transparent;
+            
+            border: 2px solid $primary-color;
+            
+            &:hover{
+                
+                background-color: $primary-color; // modificado por obsolecencia
+                color: $black;
+            }
+        }
+
+    }
+
+    &__secondary {
+       
+        background-color: $secondary-color;
+        &:hover{
+            
+            background-color: $primary-color;
+            color: $secondary-color;
+        }
+        &.btn__outline {
+            
+            color: $black;
+            background-color: transparent;
+            
+            border: 2px solid $secondary-color;
+            
+            &:hover{
+                
+                background-color: $primary-color; // modificado por obsolecencia
+                color: $black;
+            }
+        }
+    }
+    
+
+}
+
+
+.navbar__menu-button{
+    position: fixed;
+    top:0;
+    right:0;
+    height: 35px;
+}
+
+// oculto boton para medios mas grandes
+.navbar__menu-button {
+    @media screen and (min-width: map-get($grid-breakpoints, sm)) {
+        display: none;
+    }
+}

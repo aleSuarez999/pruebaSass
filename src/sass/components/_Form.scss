@@ -1,0 +1,50 @@
+@use './variables' as *;
+
+.form{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    margin-right: 1rem;
+    align-items: center;
+    border-radius: .5rem;
+
+    input, textarea, select {
+        margin: 0.2rem auto;
+        padding: .5rem .5rem;
+        border-radius: .3rem; /*1rem 16px*/
+        border: 1px solid grey;
+        background-color: $color;
+        background-color: $color3;
+        color: white;
+        width: 80%;
+        &:focus{
+            background: white;
+            color: $color4;
+            border: 2px solid $terciary-color;
+        }
+    }
+    label{
+        font-family: "Roboto Flex", Arial;
+        width: 80%;
+        
+    }
+    textarea{
+        height: 5rem;
+        resize:none;
+        
+      
+    }
+  
+
+    .btn__submit{
+        @extend .btn__outline;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        width: 5rem;
+        align-self: center;
+        cursor: pointer;
+        :hover{
+            background-color: $color1;
+        }
+    }
+}

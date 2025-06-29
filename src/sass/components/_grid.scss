@@ -1,0 +1,18 @@
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat($grid-columns, 1fr);
+    column-gap: 1rem; /* espacio entre columnas */
+    row-gap: 1rem; /* espacio entre filas */
+    grid-auto-rows: minmax(); 
+  //  border: 1px solid black;
+
+}
+
+@for $i from 1 through $grid-columns-header  {
+    .col-#{$i} {
+        grid-column: span #{$i};
+       // border: 1px solid orange;
+    }
+}
+
