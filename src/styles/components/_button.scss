@@ -1,7 +1,3 @@
-@use "sass:color"; // da errores sin esto
-
-@use '../utils/variables' as *; /// sin esto no me toma las variables
-
 .btn {
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;

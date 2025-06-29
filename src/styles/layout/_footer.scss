@@ -1,4 +1,4 @@
-footer{
+footer_SIN_USO{
     padding: 1rem;
     color: $color2;
     font-size: .8rem;    
@@ -24,3 +24,9 @@ footer{
     
 }
 
+.footer__content{
+    position: fixed;
+    bottom:0;
+    width: 100%;
+    padding: 0 2rem;
+}

@@ -1,4 +1,4 @@
-@use './variables' as *;
+@import "../abstracts/variables";
 
 .form{
     display: flex;
@@ -13,7 +13,7 @@
         padding: .5rem .5rem;
         border-radius: .3rem; /*1rem 16px*/
         border: 1px solid grey;
-        background-color: $color;
+        background-color: $primary-color;
         background-color: $color3;
         color: white;
         width: 80%;
@@ -47,4 +47,11 @@
             background-color: $color1;
         }
     }
+
+    .alert-color {
+        color: red;
+
+        
+    }
 }
+
