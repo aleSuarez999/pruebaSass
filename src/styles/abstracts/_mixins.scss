@@ -12,3 +12,8 @@
     flex-direction: $direction;
     align-items: $align;
 }
+@mixin add-box-shadow-on-hover{
+    &:hover{
+        box-shadow: $shadow-elevated;
+    }
+}

@@ -3,8 +3,11 @@ import Text from './Text'
 
 function Navbar() {
   return (
-    <header>
-        <Text as="h1" text="React Router" />
+    <header className='header__content' >  
+        <div className='header__container'>
+            <Text as="h1" text="Cuadros Cósmicos" />
+            
+        </div>
     </header>
   )
 }

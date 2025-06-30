@@ -1,32 +1,15 @@
-footer_SIN_USO{
-    padding: 1rem;
-    color: $color2;
-    font-size: .8rem;    
-    ul {
-        margin: 0;
-        display: flex;
-        flex-direction: row;
-        justify-content:space-around;
-
-        li {
-            list-style: none;
-            cursor: pointer;
-            display: inline-block;
-            position: relative;
-            line-height: 1;
-        }
-        @media screen and (max-width: map-get($grid-breakpoints, sm)){ 
-            flex-direction: column;
-            padding-left: 0;
-        }
-
-    }
-    
-}
-
 .footer__content{
+    background-color: $primary-color;
     position: fixed;
     bottom:0;
     width: 100%;
+    left:0;
+
+}
+
+
+.footer__container{
+
     padding: 0 2rem;
 }
+

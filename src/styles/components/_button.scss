@@ -44,12 +44,25 @@
             
             &:hover{
                 
-                background-color: $primary-color; // modificado por obsolecencia
+                background-color: $primary-color;
                 color: $black;
             }
         }
     }
-    
+
+    .btn__outline {
+        
+        color: $black;
+        background-color: transparent;
+        
+        border: 2px solid $secondary-color;
+        
+        &:hover{
+            
+            background-color: $primary-color;
+            color: $black;
+        }
+    }
 
 }
 

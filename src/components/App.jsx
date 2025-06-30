@@ -1,11 +1,12 @@
 
+import AppRoutes from '../routes/AppRoutes'
 import Text from './Text'
 
 
 function App() {
 
   return (
-    <Text as="h1" text="no se quien me llama" />
+    <AppRoutes />
   )
 }
 

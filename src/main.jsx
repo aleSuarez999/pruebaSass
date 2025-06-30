@@ -1,10 +1,10 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
-import AppRoutes from './routes/AppRoutes.jsx'
+import App from './components/App.jsx'
 
 createRoot(document.getElementById('root')).render(
 
-      <AppRoutes />
+      <App />
 
 )
