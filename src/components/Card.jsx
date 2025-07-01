@@ -12,7 +12,7 @@ function Card({
 }) {
 
   return (
-    <div className="card__container">
+    <div className="card__container col-12 col-xs-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3">
           <img src={image} className="card__img" alt="..." />
           
           <div className="card__body">

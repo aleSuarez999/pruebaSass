@@ -8,7 +8,9 @@ function Layout() {
   return (
     <>
         <Navbar />
+        <div id='main' className='container d-flex'>
         { <Outlet /> }
+        </div>
         <Footer />
     </>
   )
