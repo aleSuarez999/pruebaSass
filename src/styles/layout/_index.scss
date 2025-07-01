@@ -1,7 +1,7 @@
 #root{
 
   margin: 1rem 0;
-  padding: 2rem;
+  padding: 1rem;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -18,7 +18,7 @@ a:hover {
 }
 
 body {
-  margin: 3rem 0;
+  margin: 1rem 0;
   display: flex;
   place-items: center;
   min-width: 320px;
@@ -31,7 +31,7 @@ body {
 h1 {
   font-size: 2rem;
   line-height: 1.1;
-  margin: 2rem 0;
+  margin: 1rem 0;
 
 }
 
@@ -48,4 +48,7 @@ h1 {
   button {
     background-color: #f9f9f9;
   }
+}
+main{
+
 }

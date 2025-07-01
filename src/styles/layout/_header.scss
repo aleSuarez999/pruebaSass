@@ -4,11 +4,17 @@
     top:0;
     left:0;
     width: 100%;
-  
+
 }
 
 .header__container{
 
-    padding: 0 2rem;
+padding: 0 1rem;
+display: flex;
+justify-content: space-around;
+
+align-items: center;
+
 }
+
 

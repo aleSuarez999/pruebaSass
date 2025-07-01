@@ -1,0 +1,23 @@
+aside{
+    z-index: 150;
+    height: 300px;
+    display: flex;
+    width: 150px;
+    
+    nav{
+        margin-top: 5rem;
+        display: flex;
+        flex-direction: column;
+        justify-items:center;
+        justify-content: space-around;
+        gap: 2rem;
+        a {
+            color:black;
+            border-radius: 1rem;
+            background-color: transparent;
+            border: 2px solid $secondary-color;
+
+            padding: 1rem;
+        }
+    }
+}

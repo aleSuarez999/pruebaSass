@@ -1,0 +1,12 @@
+.header__container{
+    nav{
+        display: flex;
+        right: 0;
+        justify-content: space-between;
+        a {
+            padding: 1rem;
+            font-weight: 800;
+
+        }            
+    }
+}
