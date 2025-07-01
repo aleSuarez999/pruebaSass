@@ -9,23 +9,22 @@ import { useParams, useSearchParams } from 'react-router'
 
 
 export default function Products() {
-  //console.log(products)
+  
   
   const {category} = useParams() // con esto leemos la categoria que viene del ruteo
-  const [cateProds, setCateProds] = useState([]) //
-
-   useEffect(() => {
-    setCateProds(products.filter(data  => data.category === category))
+  
+ const [cateProds, setCateProds] = useState([])  
+  
+  useEffect(() => {
+    setCateProds(products.filter((data) => data.category === category))
     
-  }, [cateProds])
+  }, [category])
+
+ 
 
   return (
-  
-  
   <>
-        
         <Text as="h2" text="Productos" />
-        
         <div className='product__grid'>
         {
             cateProds.map(data => 
@@ -33,7 +32,6 @@ export default function Products() {
             )
         }
           </div>
-            
     </>
   )
 }

@@ -1,15 +1,25 @@
 import React from 'react'
 import { NavLink } from 'react-router'
+import {products} from "../data/products"
 
 function Aside() {
+
+  const categories = products.map(prod => prod.category) // esto trae todas una por registro
+  const categories2 = [...new Set(categories)];
+  //const categories = products.filter(prod => (categories[prod.category]) )
+
+  console.log(categories2)
+  //return 0
   return (
     <aside>
         <nav>
-            <NavLink to="/products/categoria1">categoria1</NavLink>
-            <NavLink to="/products/categoria2">categoria2</NavLink>
-            <NavLink to="/products/categoria3">categoria3</NavLink>
-            <NavLink to="/products/categoria4">categoria4</NavLink>
-            <NavLink to="/products/categoria5">categoria5</NavLink>
+          {
+            categories2.map( 
+                            cate => {
+                             <NavLink to = `/products/${cate}` >{cate}</NavLink>
+                            }
+                         )
+          }
         </nav>
     </aside>
   )
