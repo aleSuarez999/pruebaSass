@@ -11,8 +11,7 @@ function Layout() {
         <Navbar />
         <Aside />
         <div id='main' className='container'>
-        
-        { <Outlet /> }
+          { <Outlet /> }
         </div>
         <Footer />
     </>

@@ -1,23 +1,24 @@
 aside{
-    z-index: 150;
-    height: 300px;
+    z-index: 0;
+    height: 100vh - 100;
     display: flex;
-    width: 150px;
+    width: auto;
+    justify-content: start;
     
     nav{
         margin-top: 5rem;
+        padding: 1rem 5rem 3rem 1rem;
         display: flex;
         flex-direction: column;
-        justify-items:center;
-        justify-content: space-around;
-        gap: 2rem;
+        align-items: start;
+        justify-content:flex-start;
+        gap: 0.5rem;
         a {
             color:black;
-            border-radius: 1rem;
             background-color: transparent;
-            border: 2px solid $secondary-color;
-
-            padding: 1rem;
+            vertical-align:top;
+            &::before{content: " ~ "}
         }
+
     }
 }
