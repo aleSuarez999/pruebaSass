@@ -1,3 +1,5 @@
+@use "sass:map";
+@use "../abstracts/variables" as *;
 .btn {
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
@@ -76,7 +78,7 @@
 
 // oculto boton para medios mas grandes
 .navbar__menu-button {
-    @media screen and (min-width: map-get($grid-breakpoints, sm)) {
+    @media screen and (min-width: map.get($grid-breakpoints, sm)) {
         display: none;
     }
 }

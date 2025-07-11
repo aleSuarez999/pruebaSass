@@ -4,7 +4,7 @@ import Button from './Button'
 
 function Card({
     name,
-    category,
+    brand,
     image,
     amount,
     ...props
@@ -17,7 +17,7 @@ function Card({
           
           <div className="card__body">
               <Text as="h4" className="card__title"  text={name} />
-              <Text as="p" className="card__text" text={category} />
+              <Text as="p" className="card__text" text={brand} />
               <Text as="p" className="precio" text={amount} />
     
               <Button className="btn btn__outline" label="Comprar" />

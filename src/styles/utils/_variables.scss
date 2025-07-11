@@ -1,0 +1,102 @@
+$grid-columns: 12;
+$cardWidth: 210px;
+
+/* SCSS HEX */
+$color1: hsl(60, 96%, 85%);
+$color2: #7D95C6ff;
+$color3: #33BDDDFF;
+$color4: #897C94ff;
+$color5: #CD0B30ff;
+$color6: #33657130;
+$color7: #551055;
+
+$white: #FFFFFFff;
+$black: #3E4345ff;
+
+$shadow-elevated: 0px 3px 3px 3px rgba(150, 150, 0, 0.5);
+
+$primary-color:  $color1;
+$secondary-color:$color2;
+$terciary-color: $color3;
+$card-color: $color7;
+$alert-color: $color5;
+
+$letters_primary: $color4;
+
+$font_color_primary:$color5;
+
+$btn-input-border-width: 1px;
+$btn-input-border-style: solid;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+
+); 
+$grid-width: (
+  xs: 360px,
+  sm: 520px,
+  md: 720px,
+  lg: 880px,
+  xl: 1120px,
+  xxl: 1280px
+);
+
+$spacings: (
+    m: margin,
+    mt: margin-top,
+    mb: margin-bottom,
+    ml: margin-left,
+    mr: margin-right,
+    p: padding,
+    pt: padding-top,
+    pb: padding-bottom,
+    pl: padding-left,
+    pr: padding-right,
+);
+
+$aligns: (
+    aiC: center,
+    aiE: end,
+    aiFE: flex-end,
+    aiS: start,
+    aiFS: flex-start,
+);
+
+$alignSelf: (
+    asC: center,
+    asE: end,
+    asFE: flex-end,
+    asS: start,
+    asFS: flex-start,
+);
+
+$justifys: (
+  jcC: center,
+  jcL: left,
+  jcSA: space-around,
+  jcSB: space-between,
+  jcFE: flex-end
+
+);
+
+// justify-self jsFE
+
+$textAligns: (
+  taC: center,
+  taL: left,
+  taR: right
+);
+
+$font-w: (
+  xs: 2rem,
+  sm: 2rem,
+  md: 2.5rem,
+  lg: 2.5rem,
+  xl: 3.5rem,
+  xxl: 4rem
+); 

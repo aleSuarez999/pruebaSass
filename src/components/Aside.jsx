@@ -1,12 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router'
-import {products} from "../data/products"
+//import {products} from "../data/products"
 import Text from './Text'
+import { getProducts } from '../utils/api'
+
+
 
 function Aside() {
 
-  const categories = products.map(prod => prod.category) // esto trae todas una por registro
-  //const imagenes = products.map(prod => prod.image) // esto trae todas una por registro
+  const [products, setproducts] = useState([])  
+
+    useEffect(() => {
+      getProducts()
+      .then(prods => setproducts(prods))
+      .catch(err => console.error(err))
+      .finally(console.log(products))
+      
+    }, [])
+
+  const categories = products.map(prod => prod.brand) // esto trae todas una por registro
+  console.log(categories)
+  //const imagenes = products.map(prod => prod.image)
   const categories2 = [...new Set(categories)];
 
   console.log(categories2)
@@ -15,11 +29,11 @@ function Aside() {
     <aside>
         <nav>
           {
-            categories2.map( 
-                    cate =>   
+            categories2.map(  // le agrego id porque sino me da error
+                    (cate, id) =>   
                       <div>
-                        <img src='' ></img>
-                        <NavLink key={cate} to={`/products/${cate}`} >{cate}</NavLink>
+                        
+                        <NavLink key={id} to={`/products/${cate}`} >{cate}</NavLink>
                       </div>
                   )
           }

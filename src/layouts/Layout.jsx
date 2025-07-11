@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { Outlet } from 'react-router'
 import Aside from '../components/Aside'
+import Container from '../components/Container'
 
 function Layout() {
     // children trae la pagina como children
@@ -10,9 +11,9 @@ function Layout() {
     <>
         <Navbar />
         <Aside />
-        <div id='main' className='container'>
+          <Container>
           { <Outlet /> }
-        </div>
+          </Container>
         <Footer />
     </>
   )

@@ -1,5 +1,4 @@
-@import "../abstracts/variables";
-
+@use "../abstracts/variables" as *;
 .form{
     display: flex;
     flex-direction: column;
@@ -37,7 +36,7 @@
   
 
     .btn__submit{
-        @extend .btn__outline;
+   
         margin-top: 1rem;
         margin-bottom: 1rem;
         width: 5rem;

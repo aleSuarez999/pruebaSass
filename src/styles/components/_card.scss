@@ -1,3 +1,8 @@
+@use "sass:map";
+@use "sass:color";
+@use "../utils/variables" as *;
+@use "../utils/mixins" as *;
+
 .card__container{
     //box-shadow: 0 0 2px 0 #504c4c;
     padding: 2px;
@@ -17,7 +22,8 @@
     border: 1px dotted $primary-color;
     overflow: hidden; // sobra color por abajo
 
-    background-color: lighten($color: $color2, $amount: 35);
+    //background-color: lighten($color: $color2, $amount: 35);
+    background-color: color.adjust($color2, $lightness: 35%);
     cursor: pointer;
 
     .card__body{

@@ -12,7 +12,7 @@ function AppRoutes() {
     // el route layout es para agregarle header y footer a todas las paginas
     <BrowserRouter> 
         <Routes> 
-            <Route element={<Layout />}>  
+            <Route element={<Layout />} >  
                 <Route index element={<Home />} />
                 <Route path="/nosotros" element={<Nosotros />} />
                 <Route path="/contacto" element={<Contacto />} />
