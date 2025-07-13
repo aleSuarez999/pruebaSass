@@ -6,6 +6,41 @@
         }
     }
 }
+/*
+$aligns: (
+    aic: center,
+    aie: end,
+    aife: flex-end,
+    ais: start,
+    aifs: flex-start,
+);
+pepe
+*/
+@each $key, $prop in $aligns {
+        .#{$key} {
+            align-items: #{$prop};
+        }
+}
+
+@each $key, $prop in $alignSelf {
+        .#{$key} {
+            align-self: #{$prop};
+        }
+}
+
+@each $key, $prop in $justifys {
+        .#{$key} {
+            justify-content: #{$prop};
+        }
+}
+
+@each $key, $prop in $justifySelf {
+        .#{$key} {
+            justify-self: #{$prop};
+        }
+}
+
+
 
 .w-100 {
     width: 100%;
@@ -21,6 +56,13 @@
 
 .justify-end {
     justify-content: flex-end;
+}
+
+.justify-self-end {
+    justify-self:end;
+}
+.align-end {
+    align-items:end;
 }
 
 .align-center {

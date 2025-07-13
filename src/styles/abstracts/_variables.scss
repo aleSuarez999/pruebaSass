@@ -60,36 +60,49 @@ $spacings: (
 );
 
 $aligns: (
-    aiC: center,
-    aiE: end,
-    aiFE: flex-end,
-    aiS: start,
-    aiFS: flex-start,
+    aic: center,
+    aie: end,
+    aife: flex-end,
+    ais: start,
+    aifs: flex-start,
 );
 
 $alignSelf: (
-    asC: center,
-    asE: end,
-    asFE: flex-end,
-    asS: start,
-    asFS: flex-start,
+    aisc: center,
+    aise: end,
+    aisfe: flex-end,
+    aiss: start,
+    aisfs: flex-start,
 );
 
 $justifys: (
-  jcC: center,
-  jcL: left,
-  jcSA: space-around,
-  jcSB: space-between,
-  jcFE: flex-end
+  jcc: center,
+  jcl: left,
+  jcsa: space-around,
+  jcsb: space-between,
+  jcfe: flex-end,
+  jce: end
 
 );
+
+$justifySelf: (
+  jsc: center,
+  jsl: left,
+  jssa: space-around,
+  jssb: space-between,
+  jsfe: flex-end,
+  jse: end
+
+);
+
+
 
 // justify-self jsFE
 
 $textAligns: (
-  taC: center,
-  taL: left,
-  taR: right
+  tac: center,
+  tal: left,
+  tar: right
 );
 
 $font-w: (

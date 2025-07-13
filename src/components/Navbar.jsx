@@ -1,6 +1,7 @@
 import React from 'react'
 import Text from './Text'
 import { NavLink } from 'react-router'
+import Cart from './Cart'
 
 function Navbar() {
   return (
@@ -11,8 +12,10 @@ function Navbar() {
               </NavLink>
             <nav>
             
-                <NavLink to="/Contacto" >Contacto</NavLink>
                 <NavLink to="/Alta" >Alta</NavLink>
+                <NavLink to="/Contacto" >Contacto</NavLink>
+                <NavLink to="/Nosotros" >Nosotros</NavLink>
+                <NavLink> <Cart /></NavLink>
             </nav>
         </div>
     </header>

@@ -6,6 +6,7 @@ import Contacto from "../pages/Contacto"
 import "../styles/main.scss"
 import Layout from "../layouts/Layout"
 import Products from "../pages/Products"
+import ProductDetail from "../pages/ProductDetail"
 
 function AppRoutes() {
   return (
@@ -19,6 +20,7 @@ function AppRoutes() {
                 <Route path="/alta" element={<Alta />} />
 
                 <Route path="/products/:category" element={<Products />} />
+                <Route path="/product/:id" element={<ProductDetail />} />
             </Route>
         </Routes>
     </BrowserRouter> 

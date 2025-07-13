@@ -1,4 +1,5 @@
 
+import CartProvider from '../context/CartProvider'
 import AppRoutes from '../routes/AppRoutes'
 import Text from './Text'
 
@@ -6,7 +7,9 @@ import Text from './Text'
 function App() {
 
   return (
-    <AppRoutes />
+    <CartProvider>
+      <AppRoutes />
+    </CartProvider>
   )
 }
 
