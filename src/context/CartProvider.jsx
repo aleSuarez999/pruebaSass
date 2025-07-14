@@ -21,7 +21,7 @@ function CartProvider({children}) {
      // console.log("llega a incrementa", prod)
 
       const findProduct = shoppCart.find( obj => obj.prod.id === prod.id )
-      console.log(findProduct)
+      //console.log(findProduct)
       {
         if (!findProduct){
         setshoppCart([

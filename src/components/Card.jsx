@@ -3,7 +3,7 @@ import Text from './Text'
 import Button from './Button'
 import { useNavigate } from 'react-router'
 import CartContext from '../context/CartContext';
-import Counter from './Counter';
+import CounterAdd from './CounterAdd';
 import Box from './Box';
 
 function Card({
@@ -30,8 +30,8 @@ function Card({
               <Text as="h4" className="card__title"  text={name} />
               <Text as="p" className="card__text" text={brand} />
               <Text as="p" className="precio" text={amount} />
-              <Box className="d-flex counter__container jcsb">
-                <Counter prod={prod} />
+              <Box className="d-flex counter__container jcc">
+                <CounterAdd prod={prod} />
               </Box>
           </div>
     </div>

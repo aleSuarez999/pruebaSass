@@ -1,12 +1,14 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Text from './Text'
 import Button from './Button'
 import CartContext from '../context/CartContext'
 
 function Counter({prod}) {
+    console.log(prod)
+    //alert(prod.cantidad)
     const { decrement, increment } = useContext(CartContext)
-    const [contador, setContador] = useState(0)
-    //console.log(prod) // viene el producto completo
+    const [contador, setContador] = useState(parseInt(prod.cantidad))
+
   return (
     <>
          <Button id="resta" label="-" onClick={() => 
@@ -14,7 +16,6 @@ function Counter({prod}) {
               setContador(contador - 1)
               increment(prod, contador - 1)
             }
-        
         } 
             disabled={contador === 0}
           />
