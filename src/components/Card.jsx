@@ -21,6 +21,8 @@ function Card({
   const {increment} = useContext(CartContext)
 //<div role='button' className="card__container col-12 col-xs-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3" onClick={() => navigate(`/product/${id}`)}>
 // <Button className="btn d-flex btn__outline jsc" label="Agregar" onClick={() => increment({id})}/>
+//<Card key={data.id} {...data} prod={data} />
+  //console.log(prod)
   return (
     
       <div  className="card__container col-12 col-xs-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3" >

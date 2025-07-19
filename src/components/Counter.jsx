@@ -2,38 +2,42 @@ import React, { useContext, useEffect, useState } from 'react'
 import Text from './Text'
 import Button from './Button'
 import CartContext from '../context/CartContext'
+import Box from './Box'
 
 function Counter({prod}) {
-    console.log(prod)
-    //alert(prod.cantidad)
-    const { decrement, increment } = useContext(CartContext)
-    const [contador, setContador] = useState(parseInt(prod.cantidad))
 
+    const {cartModif, shoppCart} = useContext(CartContext)
+    const [contador, setContador] = useState(0)
+
+   
+    const increment = () => {
+        setContador(contador + 1)
+        cartModif(prod, contador + 1)
+    }
+
+    const decrement = () => {
+        setContador(contador - 1)
+        cartModif(prod, contador - 1)
+    }
+    
+    useEffect(() => {
+      setContador(prod.cantidad)
+      console.log("PROD",prod)
+      console.log("PRODCANT",prod.cantidad)
+    }, [])
+    
+    
+    
+    
+
+   // console.log(prod)
   return (
     <>
-         <Button id="resta" label="-" onClick={() => 
-            {
-              setContador(contador - 1)
-              increment(prod, contador - 1)
-            }
-        } 
-            disabled={contador === 0}
-          />
-        <Text 
-            as="span"
-            text={contador}
-         />
-
-         <Button label="+" 
-            id="suma"
-              onClick={
-                () => {
-                   setContador(contador + 1)
-                   increment(prod, contador + 1)
-                }
-              }
-          />
-
+      <Box>
+        <Button id="resta" label="-" onClick={decrement} disabled={contador === 0} />
+        <Text as="span" text={contador} />
+        <Button label="+" id="suma" onClick={increment} />
+      </Box>
   </>
   )
 }
