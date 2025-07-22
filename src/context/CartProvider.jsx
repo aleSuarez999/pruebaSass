@@ -20,15 +20,15 @@ function CartProvider({children}) {
     const [shoppCart, setshoppCart] = useState([]); // [{ producto: {}, cantidad: 1}, { producto: {} y cantidad: 1}]
 
     useEffect(() => {
-      if (shoppCart.length > 0)
-        console.log("SHOPCARTeffe: ", shoppCart)
+      //if (shoppCart.length > 0)
+        //console.log("SHOPCARTeffe: ", shoppCart)
     }, [shoppCart])
 
     const cartModif = ({prod}, cantidad) => {
       //console.log("llega a incrementa", prod, cantidad)
-      console.log("PROD: ", prod)
-      console.log("CANT: ", cantidad)
-      console.log("IDPROD: ", prod.id)
+     // console.log("PROD: ", prod)
+     // console.log("CANT: ", cantidad)
+    //  console.log("IDPROD: ", prod.id)
         if (!cantidad){
             
             setshoppCart(shoppCart.filter( (obj) => obj.prod.id !== prod.id ))
@@ -60,9 +60,6 @@ function CartProvider({children}) {
 
     }
 
-    const decrement = (prod, cantidad) => {
-      console.log("decremento")
-    }
 
     return (
         <CartContext.Provider value={{

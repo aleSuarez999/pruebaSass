@@ -25,7 +25,7 @@ function CounterAdd(prod) { // prod = { aa=xx, bb=xx, ...}
             id="suma"
               onClick={increment}
           />
-          <span id={`add_${prod.id}`} className='cart-message d-flex jsc' >{addMessage}</span>
+          <span className='cart-message d-flex jsc' >{addMessage}</span>
         </Box>
 
   </>

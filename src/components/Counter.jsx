@@ -22,8 +22,8 @@ function Counter({prod}) {
     
     useEffect(() => {
       setContador(prod.cantidad)
-      console.log("PROD",prod)
-      console.log("PRODCANT",prod.cantidad)
+      //console.log("PROD",prod)
+      //console.log("PRODCANT",prod.cantidad)
     }, [])
     
     
