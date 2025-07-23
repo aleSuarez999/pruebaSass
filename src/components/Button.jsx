@@ -1,6 +1,6 @@
 import React from 'react'
 function Button({
-      label, 
+      label = "", 
       color = "primary", // valor default
       variant = "solid",
       onClick,

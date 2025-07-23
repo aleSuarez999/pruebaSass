@@ -14,9 +14,9 @@ function Modal({
             createPortal(
                 <div className='modal__container' role='button' onClick={closeModal} onScroll={e => e.stopPropagation()}>
                     <div className='modal__content' onClick={e => e.stopPropagation()} >
-                        <Button  onClick={closeModal} value="Cerrar" >
-                            <FontAwesomeIcon icon={faClose} />
-                        </Button>
+                        <Button  onClick={closeModal} value="Cerrar" label={<FontAwesomeIcon icon={faClose} />}  />
+                            
+                        
                         {children}
                     </div>
                 </div>,
