@@ -2,6 +2,10 @@ import React from 'react'
 import Text from './Text'
 import { NavLink } from 'react-router'
 import Cart from './Cart'
+import Box from './Box'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
+import Button from './Button'
 
 function Navbar() {
   return (
@@ -10,13 +14,19 @@ function Navbar() {
               <NavLink to="/" >
                 <Text as="h1" text="Juguetería Cósmica" />
               </NavLink>
-            <nav>
+            <Box as="nav">
             
                 <NavLink to="/Alta" >Alta</NavLink>
                 <NavLink to="/Contacto" >Contacto</NavLink>
                 <NavLink to="/Nosotros" >Nosotros</NavLink>
                 <NavLink> <Cart /></NavLink>
-            </nav>
+            </Box>
+            <Box as="navbar__menu-button">
+              <Button  label={<FontAwesomeIcon icon={faBars} size='xl' />} />
+                
+             
+                
+            </Box>
         </div>
     </header>
   )

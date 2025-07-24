@@ -1,3 +1,6 @@
+@use "sass:map";
+@use "../abstracts/variables" as *;
+
 aside{
     z-index: -1;
     height: 100vh - 100;
@@ -21,4 +24,8 @@ aside{
         }
 
     }
+           @media screen and (max-width: map.get($grid-breakpoints, md)) {
+            display: none;
+            
+        }
 }

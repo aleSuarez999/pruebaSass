@@ -1,3 +1,6 @@
+@use "sass:map";
+@use "../abstracts/variables" as *;
+
 .header__container{
     nav{
         display: flex;
@@ -8,6 +11,13 @@
             padding: 1rem;
             font-weight: 800;
 
-        }            
+        }
+        @media screen and (max-width: map.get($grid-breakpoints, md)) {
+            display: none;
+            
+        }
+    }
+    .navbar__menu-button{
+
     }
 }
