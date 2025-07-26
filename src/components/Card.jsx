@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import Text from './Text'
-import Button from './Button'
 import { useNavigate } from 'react-router'
 import CartContext from '../context/CartContext';
 import CounterAdd from './CounterAdd';
@@ -29,9 +28,10 @@ function Card({
           <img src={image} className="card__img" alt="..." />
           
           <div className="card__body">
-              <Text as="h4" className="card__title"  text={name} />
-              <Text as="p" className="card__text" text={brand} />
-              <Text as="p" className="precio" text={amount} />
+  
+              <Text as="p" className="card__title">{name}</Text>
+              <Text as="p" className="card__brand">{brand}</Text> 
+              <Text as="p" className="precio">{amount} </Text>
               <Box className="d-flex counter__container jcc">
                 <CounterAdd prod={prod} />
               </Box>

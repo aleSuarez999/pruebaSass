@@ -1,7 +1,8 @@
 @use "sass:map";
 @use "sass:color";
-@use "../utils/variables" as *;
-@use "../utils/mixins" as *;
+@use "../abstracts/variables" as *;
+//@use "../abstracts/mixins";
+
 
 .card__container{
     //box-shadow: 0 0 2px 0 #504c4c;
@@ -40,8 +41,19 @@
         background-color: white;
     }
     .card__title{
-        margin: 0.2rem;
+        //margin: 0.2rem;
+        font-size: 1.2rem;
+        font-weight: 700;
+        display: flex;
+        justify-content: center;
+        text-align: center;
     }
+    .card__brand{
+        
+        display: flex;
+        justify-content: center;
+    }
+
     .precio{
         font-family:'Roboto Flex', Arial, Helvetica, sans-serif;
         
@@ -51,7 +63,9 @@
         justify-self: center;
         &::before{content: "$ ";}
     }
-    @include add-box-shadow-on-hover;
+    &:hover{
+        box-shadow: $shadow-elevated;
+    }
 
     
  }

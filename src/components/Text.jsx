@@ -1,17 +1,23 @@
-import React, { createElement } from 'react'
+import { createElement } from "react"
 
-function Text({ as,
-   text,
-   ...props
-  
-  }) { // desestructuro 
-  
-  return (
-    // as es el tipo , y todas las propiedades que va a tener value id name etc
-    // si App llama al Text App es el parent de text text es el children de app
-      createElement(as, { ...props, children: text  } )
-    
-  )
+const textElements = {
+    h1: "h1",
+    h2: "h2",
+    h3: "h3",
+    h4: "h4",
+    h5: "h5",
+    h6: "h6",
+    p: "p",
+    span: "span",
+    b: "b",
+    strong: "strong",
+    label: "label",
+}
+
+function Text({ as = "p", ...props}) {
+    return (
+        createElement(textElements[as] || "p", props)
+    )
 }
 
 export default Text

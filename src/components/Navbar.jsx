@@ -12,7 +12,7 @@ function Navbar() {
     <header className='header__content' >  
         <div className='header__container'>
               <NavLink to="/" >
-                <Text as="h1" text="Juguetería Cósmica" />
+                <Text as="h1" > Juguetería Cósmica</Text>
               </NavLink>
             <Box as="nav">
             
