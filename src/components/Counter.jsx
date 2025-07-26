@@ -35,7 +35,7 @@ function Counter({prod}) {
     <>
       <Box className="d-flex">
         <Button id="resta" label="-" onClick={decrement} disabled={contador === 0} />
-        <Text as="span" text={contador} className="pr-1 pl-1" />
+        <Text as="span" className="d-flex pr-2 pl-1 aic" > {contador}  </Text> 
         <Button label="+" id="suma" onClick={increment}  />
       </Box>
   </>

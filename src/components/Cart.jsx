@@ -37,11 +37,11 @@ const [cantidadTotal, setTotal] = useState(0)
       <Modal showModal={showModal} closeModal={() => setShowModal(false)} >
         <div className=''>
           <div className='rotulo'>
-            <Text as="span" text="Producto"  />
-            <Text as="span" text="Cantidad"  className="" />
+            <Text as="span" >Producto</Text>
+            <Text as="span"  className="">Cantidad</Text>
 
-            <Text as="span" text="Precio x U"  />
-            <Text as="span" text="Subtotal"   className="mr-4"  />
+            <Text as="span"  > Precio x U</Text>
+            <Text as="span" className="mr-4"  >Subtotal </Text>
           </div>
           {
             shoppCart.map(
@@ -50,10 +50,10 @@ const [cantidadTotal, setTotal] = useState(0)
                     <img src={obj.prod.image} className='modal-image mr-2' />
                     
                    
-                    <Text as="h4" text={obj.prod.name}  className="d-flex w-100 jcss ml-2"  />
+                    <Text as="h4"  className="d-flex w-100 jcss ml-2"  >{obj.prod.name}</Text>
                     <Counter prod={obj}  className="d-flex jcfe ml-4 "  />
-                    <Text as="span" text={`$ ${obj.prod.amount}`}  className="d-flex  w-100 jcsa"  />
-                    <Text as="span" text={`$ ${obj.prod.amount * obj.cantidad}`}  className="d-flex  w-100 jcsa "  />
+                    <Text as="span"   className="d-flex  w-100 jcsa"  > {`$ ${obj.prod.amount}`}</Text>
+                    <Text as="span"   className="d-flex  w-100 jcsa "  > {`$ ${obj.prod.amount * obj.cantidad}`} </Text>
                 </div>
                 
                 
@@ -64,7 +64,11 @@ const [cantidadTotal, setTotal] = useState(0)
               <hr />
             
               <div>
-                  {(costoTotal > 0) ? (<Box className="cart__summary"><Text as="span" text="Total: " className="d-flex" /> <Text as="span"  className="d-flex"  text={`$ ${costoTotal}`}  /> </Box>) : <Text className="d-flex jcc w-100" as="h4" text="No hay productos en el carrito"/>}
+                  {(costoTotal > 0) ? (
+                    <Box className="cart__summary">
+                      <Text as="span" Total:  className="d-flex" >Total: </Text> 
+                      <Text as="span"  className="d-flex" > {`$ ${costoTotal}`} </Text> 
+                    </Box>) : <Text className="d-flex jcc w-100" as="h4" > No hay productos en el carrito</Text>}
               </div>
         </div>
 
