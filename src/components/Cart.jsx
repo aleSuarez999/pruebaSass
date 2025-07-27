@@ -22,16 +22,18 @@ const [cantidadTotal, setTotal] = useState(0)
         setTotal ( shoppCart.reduce(
             (acc, prod) => acc + prod.cantidad, 0)
         )
-    
+        
+
     }, [shoppCart])
-    
+  
   //console.log(shoppCart)
   return (
    <>
       <div className='cart__container' >
-          <div className="cart__badge" role='button' onClick={() => setShowModal(true)}>{cantidadTotal}</div>
-
-          <FontAwesomeIcon icon={faShoppingCart} className='faShopping' color='red'  size="xl"/>
+        {
+          (cantidadTotal > 0) && (<div className="cart__badge" role='button' onClick={() => setShowModal(true)}   >{cantidadTotal}</div>)
+          }
+          <FontAwesomeIcon icon={faShoppingCart} className='faShopping' color='Blue'  size="xl"/>
       </div>
       
       <Modal showModal={showModal} closeModal={() => setShowModal(false)} >
