@@ -11,7 +11,7 @@ const campos = [
         type: "text", 
         label: "Nombre",
         validation: value => value.length > 2,
-        errorText: "El nombre del producto es incorrecto"
+        errorText: "El nombre del producto es muy corto, escriba mas de 2 letras"
     }, 
     {
         name: "price",
@@ -31,8 +31,8 @@ const campos = [
         name: "brand",
         type: "text", 
         label: "Marca",
-        validation: value => value.length > 0,
-        errorText: "La marca es un campo requerido"
+        validation: value => value.length > 3,
+        errorText: "La marca  debe tener al menos 4 caracteres"
     }, 
     {
         name: "category",
@@ -46,22 +46,20 @@ const campos = [
         name: "shortDescription",
         type: "text", 
         label: "Descripción Corta",
-        validation: value => value.length > 3,
-        errorText: "La Descripción  Corta debe tener al menos 4 caracteres"
+        validation: value => true
     }, 
     {
         name: "largeDescription",
         type: "text", 
         label: "Descripción Larga",
-        validation: value => value.length > 3,
-        errorText: "La Descripción  Larga debe tener al menos 4 caracteres"
+        validation: value => true
     }, 
     {
         name: "freeDelivery",
         type: "checkbox", 
         label: "Envio Gratis",
-        validation: true,
-        errorText: "El freeDelivery  Corta debe tener al menos 4 caracteres"
+        validation: value => true
+
     }, 
     {
         name: "ageFrom",
@@ -69,8 +67,7 @@ const campos = [
         from: 1,
         to: 10,
         label: "Edad Desde:",
-        validation: value => value > 0,
-        errorText: "La edad desde no puede ser menor a cero"
+        validation: value => true
     }, 
     {
         name: "ageTo",
@@ -78,17 +75,14 @@ const campos = [
         from: 1,
         to: 10,
         label: "Edad Hasta:",
-        validation: value => value > 0 && value <= 100,
-        errorText: "La edad hasta no puede ser menor a cero ni mayor a 100 años"
+        validation: value => true
     }
 
     ]
 
-
-
 function Alta() {
 
-    const {values, errors,  onChange, resetForm, onSubmit}  = useForm({
+    const {values, errors,  onChange, onBlur, resetForm, onSubmit}  = useForm({
         name: "",
         price: 0,
         stock: 1,
@@ -106,6 +100,7 @@ function Alta() {
              <Form
                 values={values} 
                 onChange={onChange} 
+                onBlur={onBlur} 
                 onSubmit={onSubmit}
                 inputsArray={campos} 
                    errors={errors}

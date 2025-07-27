@@ -11,6 +11,7 @@ function Form({
     values,
     errors,
     onChange,
+    onBlur,
     onSubmit
 }) {
 
@@ -31,10 +32,22 @@ function Form({
                   { 
                   
                     (type == "select") ? (
-                      <Select id={name} name={name} value={values[name]} className='form__input' onChange={onChange}  from={from}  to={to} />
+                      <Select id={name} 
+                      name={name} 
+                      value={values[name]} 
+                      className='form__input' 
+                      onChange={onChange}  
+                      onBlur={onBlur}
+                      from={from}  to={to} />
                     )
                     :
-                    (<input id={name} name={name} type={type} value={values[name]} className='form__input' onChange={onChange} />)
+                    (<input id={name} 
+                      name={name} 
+                      type={type} 
+                      value={values[name]} 
+                      onChange={onChange}
+                      className={`form__input${errors[name] ? " with-error" : ""}`}
+                      onBlur={onBlur} />)
                   
                   }
  
@@ -44,7 +57,7 @@ function Form({
             </Box>
        )}
 
-       <Button as="submit"  className="form__submit" label={<>Enviar <FontAwesomeIcon icon={faPaperPlane} /></>} />
+       <Button as="submit"  className="btn form__submit" label={<>Enviar <FontAwesomeIcon icon={faPaperPlane} /></>} />
 
       </form>
     

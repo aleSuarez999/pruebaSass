@@ -5,12 +5,12 @@ export const useForm = (initialValues, campos) => {
     const [values, setValues] = useState(initialValues)
     const [errors, setErrors ] = useState({})
 
-    const onChange = ({ target }) => {
+    const onChange = ({ target }) => { // uso para el blur porque lo pide el ejercicio
         setValues({
             ...values,
             [target.name]: target.value
         })
-
+/*      ESTO LO PIDE EN EL ONBLUR
         const campo = campos.filter( obj => obj.name === target.name )[0]
         // devuelvo en errors el array con los mensajes para cada campo
         if (campo && campo.validation(target.value))
@@ -22,10 +22,28 @@ export const useForm = (initialValues, campos) => {
          console.log("no valido", campo.errorText)
             setErrors({ ...errors, [campo.name]: campo.errorText} )
         }
+            */
+    }
+
+      const onBlur = ({ target }) => { // uso para el blur porque lo pide el ejercicio
+     
+        //alert("llega")
+        const campo = campos.filter( obj => obj.name === target.name )[0]
+
+        if (campo && campo.validation(target.value))
+        {
+            setErrors({ ...errors, [campo.name]: ""} )
+        }
+        else
+        {
+        // console.log("no valido", campo.errorText)
+            setErrors({ ...errors, [campo.name]: campo.errorText} )
+        }
     }
 
     const onSubmit = (e) => {
         e.target.preventDefault()
+        alert("submit")
     }
 
     const resetForm = () => {setValues(initialValues)}
@@ -34,8 +52,9 @@ export const useForm = (initialValues, campos) => {
         values,
         errors,
         onChange,
+        onBlur,
         resetForm,
-        onsubmit
+        onSubmit
     })
 
 }

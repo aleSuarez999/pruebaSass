@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import Text from './Text'
 
-function Select({label, onChange, name, from , to, step=1}, values) {
+function Select({label, onChange, onBlur, name, from , to, step=1}, values) {
 
     const [opciones, setOpciones] = useState([])
 
-    console.log(from)
+    //console.log(from)
 
     useEffect(() => {
         const array = [];
@@ -19,7 +19,7 @@ function Select({label, onChange, name, from , to, step=1}, values) {
   return (
     <>
         <Text as="label" htmlFor={name}>{label}</Text>
-        <select name={name} id={name} onChange={onChange} >
+        <select name={name} id={name}  onBlur={onBlur}>
             <option value="0">-- Elegí una opción --</option>
             {
                 (opciones) &&
