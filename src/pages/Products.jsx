@@ -37,7 +37,7 @@ export default function Products() {
         <div className='product__grid'>
         {
             cateProds.map(data => 
-                <Card key={data.id} {...data} />
+                <Card key={data.id} {...data} prod={data} />
             )
         }
           </div>

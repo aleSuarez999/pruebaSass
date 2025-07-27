@@ -3,29 +3,14 @@ import Container from '../components/Container'
 import Text from '../components/Text'
 import { useForm } from '../hooks/useForm'
 import Form from '../components/Form'
+import Box from '../components/Box'
 
 function ContactUs() {
-/*
-    const  [values, setValues] = useState({
-        name: "",
-        email: "",
-        subject: "",
-        mesage: "",
-    })
-*/
 
-    const form = useForm({
-        name: "",
-        email: "",
-        subject: "",
-        mesage: ""
-    })
 
-  return (
-    <Container as="main">
-            <Text as="h2">Contáctenos</Text>
-            <Form inputsArray={
-                            [
+    const {values, onChange, resetForm, onSubmit} = useForm({ name: "", email: "", subject: "", mesage: "" })
+
+    const campos = [
                                 {
                                     name: "name",
                                     label: "Nombre",
@@ -55,7 +40,18 @@ function ContactUs() {
                                 }
 
                             ]
-                           } />
+
+    return (
+    <Container as="main">
+        <Text as="h2" className="">Contáctenos</Text>
+        <Box className='product__grid'>
+            
+            <Form
+                values={values} 
+                onChange={onChange} 
+                onSubmit={onSubmit}
+                inputsArray={campos} />
+        </Box>
     </Container>
   )
 }
@@ -64,31 +60,7 @@ export default ContactUs
 
 /*
 
-const inputsArray = [
-    {
-        name: "name",
-        validation: value => value.length > 2,
-        errorText: "El nombre es incorrecto"
-    }, 
-    {
-        name:"email",
-        validation: value => {
-            const regexp = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)
-            return regexp.test(value);
-        },
-        errorText: "El email no tiene el formato correcto"
-    }, 
-    {
-        name:"subject",
-        validation: value => value.length > 0,
-        errorText: "El asunto es obligatorio"
-    }, 
-    {
-        name:"body",
-        validation: value => value.length > 0,
-        errorText: "Ingrese un texto"
-    }
-]
+
 
 const inputsArray = [
     {

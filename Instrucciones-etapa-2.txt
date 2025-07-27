@@ -11,25 +11,30 @@ LISTO - En cuanto al funcionamiento del sitio, se debe crear una SPA con REACT. 
 Se deben brindar feedbacks para todas las acciones que realice el usuario, y se pueden agregar 
 ayudas contextuales como atributos title o mensajes emergentes para que el usuario comprenda lo que está sucediendo. 
 
-Se debe tener en cuenta las distintas resoluciones de pantalla y tipos de dispositivo,
+LISTO * Se debe tener en cuenta las distintas resoluciones de pantalla y tipos de dispositivo,
  y acomodar los elementos apropiadamente en todas ellas.
 
 *** Descripción de lo que se debe desarrollar en esta segunda etapa
 
-El sitio web a desarrollar tendrá un botón de carrito en el header que mostrará un modal
+LISTO *El sitio web a desarrollar tendrá un botón de carrito en el header que mostrará un modal
  con el listado de productos que se hayan agregado al carrito. 
- El modal se cerrará al presionar nuevamente en el botón del carrito, 
+ 
+LISTO * El modal se cerrará al presionar nuevamente en el botón del carrito, 
  la por de cierre incorporada dentro del modal, 
- la tecla ESC del teclado o al hacer clic en cualquier zona fuera del modal. 
- Dentro del modal se mostrarán los productos que hayan sido agregados al carrito 
+ 
+ la tecla ESC del teclado 
+ 
+ LISTO * o al hacer clic en cualquier zona fuera del modal. 
+ 
+ LISTO * Dentro del modal se mostrarán los productos que hayan sido agregados al carrito 
  (leídos del localStorage y React context) a partir de las cards. 
- Cada producto agregado al modal mostrará su foto, nombre, precio, cantidad y subtotal.
- Adicionalmente, se podrán agregar botones para sumar o restar la cantidad o editar directamente el número de unidades.
+LISTO * Cada producto agregado al modal mostrará su foto, nombre, precio, cantidad y subtotal.
+ LISTO * Adicionalmente, se podrán agregar botones para sumar o restar la cantidad o editar directamente el número de unidades.
 
-Todas las vistas serán gestionadas con React Router y la "home" mostrará el listado de cards generadas
+LISTO *Todas las vistas serán gestionadas con React Router y la "home" mostrará el listado de cards generadas
 de forma automatica con REACT, que permitan agregar el producto que se detalla en ella al carrito.
-Al hacerlo, se deberá informar al usuario con un mensaje que se agregó el producto al carrito y 
-se adicionará el producto al modal del carrito como uno nuevo, si no existía previamente.
+LISTO * Al hacerlo, se deberá informar al usuario con un mensaje que se agregó el producto al carrito y 
+LISTO * se adicionará el producto al modal del carrito como uno nuevo, si no existía previamente.
 
 En la vista de alta, se deberá validar el nombre, precio, stock, marca y categoría del producto. 
 Además, cada campo deberá informar los errores de validación al perder el foco y 
@@ -39,12 +44,12 @@ Solo se permitirá el envío de los datos si todos los campos fueron validados e
 
 
 * Sección "Home"
-Se mostrará un listado de cards de los productos obtenidos del context de productos y se mostraran 
+LISTO *Se mostrará un listado de cards de los productos obtenidos del context de productos y se mostraran 
 para que los usuarios puedan interactuar con ellas y agregar el producto al carrito. [**cargar en el context 
 los productos**]
-Cada card tendrá un botón para agregar el producto al carrito y se mostrará un mensaje no invasivo al
+LISTO * Cada card tendrá un botón para agregar el producto al carrito y se mostrará un mensaje no invasivo al
  usuario cuando se agregue.
-Al agregarse un producto al carrito, se adicionará al modal del carrito como uno nuevo y si ya existía,
+LISTO * Al agregarse un producto al carrito, se adicionará al modal del carrito como uno nuevo y si ya existía,
  se incrementará la cantidad de unidades sin repetir el producto.
 Se pueden agregar elementos interactivos a las cards de forma optativa, como descripciones largas del producto o fotos adicionales.
 

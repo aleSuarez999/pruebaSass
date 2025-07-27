@@ -66,7 +66,7 @@ const [cantidadTotal, setTotal] = useState(0)
               <div>
                   {(costoTotal > 0) ? (
                     <Box className="cart__summary">
-                      <Text as="span" Total:  className="d-flex" >Total: </Text> 
+                      <Text as="span"  className="d-flex" >Total: </Text> 
                       <Text as="span"  className="d-flex" > {`$ ${costoTotal}`} </Text> 
                     </Box>) : <Text className="d-flex jcc w-100" as="h4" > No hay productos en el carrito</Text>}
               </div>

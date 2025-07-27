@@ -4,11 +4,16 @@ export const useForm = (initialValues) => {
 
     const [values, setValues] = useState(initialValues)
 
-    const onChange = ({target}) => {
+    const onChange = ({ target }) => {
         setValues({
             ...values,
             [target.name]: target.value
         })
+    }
+
+    const onSubmit = (e) => {
+        e.target.preventDefault()
+
     }
 
     const resetForm = () => {setValues(initialValues)}
@@ -16,7 +21,8 @@ export const useForm = (initialValues) => {
     return ({
         values,
         onChange,
-        resetForm
+        resetForm,
+        onsubmit
     })
 
 }

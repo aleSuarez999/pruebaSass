@@ -10,6 +10,7 @@ function Card({
     name,
     brand,
     image,
+    category,
     amount,
     prod,
     ...props
@@ -30,7 +31,7 @@ function Card({
           <div className="card__body">
   
               <Text as="p" className="card__title">{name}</Text>
-              <Text as="p" className="card__brand">{brand}</Text> 
+              <Text as="p" className="card__category">{category}</Text> 
               <Text as="p" className="precio">{amount} </Text>
               <Box className="d-flex counter__container jcc">
                 <CounterAdd prod={prod} />

@@ -3,25 +3,18 @@ import Container from '../components/Container'
 import Text from '../components/Text'
 import { useForm } from '../hooks/useForm'
 import Form from '../components/Form'
+import Box from '../components/Box'
 
 function Alta() {
-/*
-    const  [values, setValues] = useState({
-        name: "",
-        email: "",
-        subject: "",
-        mesage: "",
-    })
-*/
 
-    const form = useForm({
+    const {values, onChange, resetForm, onSubmit}  = useForm({
         name: "",
         price: 0,
         stock: 0,
         mesage: ""
     })
 
-const inputsArray = [
+const campos = [
     {
         name: "name",
         label: "Nombre",
@@ -77,13 +70,20 @@ const inputsArray = [
         errorText: "La edad hasta no puede ser menor a cero ni mayor a 100 años"
     }
 
-                            ]
+    ]
 
 
   return (
     <Container as="main">
-            <Text as="h2">Contáctenos</Text>
-            <Form inputsArray={inputsArray} />
+        <Text as="h2" className="">Alta de producto</Text>
+        <Box className='product__grid'>
+            
+             <Form
+                values={values} 
+                onChange={onChange} 
+                onSubmit={onSubmit}
+                inputsArray={campos} />
+        </Box>
     </Container>
   )
 }

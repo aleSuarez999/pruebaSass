@@ -4,7 +4,8 @@
   margin: 3rem 0;
   padding: 0rem;
   display: flex;
-  justify-content: center;
+  justify-content:flex-start;
+  align-items: start;
   width: 100%;
   z-index: 1;
 }
@@ -21,7 +22,7 @@ a:hover {
 body {
   margin: 1rem 0;
   display: flex;
-  place-items: center;
+  //place-items: center;
   min-width: 320px;
   min-height: 100vh;
   width: 100%;
