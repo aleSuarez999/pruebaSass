@@ -12,12 +12,10 @@ export const useForm = (initialValues, campos) => {
         })
 
         const campo = campos.filter( obj => obj.name === target.name )[0]
-        //console.log(campo)
-        //console.log(campo.validation)
-        //console.log(campo.validation(target.value))
+        // devuelvo en errors el array con los mensajes para cada campo
         if (campo && campo.validation(target.value))
         {
-                setErrors({ ...errors, [campo.name]: ""} )
+            setErrors({ ...errors, [campo.name]: ""} )
         }
         else
         {
@@ -28,7 +26,6 @@ export const useForm = (initialValues, campos) => {
 
     const onSubmit = (e) => {
         e.target.preventDefault()
-
     }
 
     const resetForm = () => {setValues(initialValues)}

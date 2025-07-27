@@ -1,0 +1,37 @@
+import React, { useEffect, useState } from 'react'
+import Text from './Text'
+
+function Select({label, onChange, name, from , to, step=1}, values) {
+
+    const [opciones, setOpciones] = useState([])
+
+    console.log(from)
+
+    useEffect(() => {
+        const array = [];
+        for (let i = from; i < to; i += step) {
+        array.push(i);
+        }
+        setOpciones(array);
+    }, [from, to, step]); 
+      
+  
+  return (
+    <>
+        <Text as="label" htmlFor={name}>{label}</Text>
+        <select name={name} id={name} onChange={onChange} >
+            <option value="0">-- Elegí una opción --</option>
+            {
+                (opciones) &&
+                opciones.map(opc => (
+                  
+                    <option key={opc} value={opc}  > {opc} </option>
+                ) )
+            }
+ 
+        </select>
+    </>
+  )
+}
+
+export default Select

@@ -10,7 +10,7 @@
         width: 100%;
         display: flex;
     }
-    input, textarea, select {
+    input, textarea, select, checkbox {
         margin: 0.2rem auto;
     
         padding: .5rem .5rem;
@@ -51,9 +51,9 @@
         }
     }
 
-    .alert-color {
+    .form__error {
         color: red;
-
+        font-size: 0.9rem;
         
     }
 }
