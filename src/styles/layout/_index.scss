@@ -1,5 +1,5 @@
+@use "sass:map";
 @use "../abstracts/variables" as *;
-
 #root{
   margin: 3rem 0;
   padding: 0rem;
@@ -8,6 +8,9 @@
   align-items: start;
   width: 100%;
   z-index: 1;
+   @media screen and (min-width: map.get($grid-width, xs) ) {
+         justify-content:center;
+    }
 }
 
 a {

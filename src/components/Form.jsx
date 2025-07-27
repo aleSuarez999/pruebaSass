@@ -4,7 +4,7 @@ import Button from './Button'
 import Box from './Box'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons'
-//<div  className="card__container col-12 col-xs-12 col-md-8 col-lg-8 col-xl-8 col-xxl-8" >
+
 function Form({
     inputsArray,
     values,
