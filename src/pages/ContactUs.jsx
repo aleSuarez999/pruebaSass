@@ -5,41 +5,43 @@ import { useForm } from '../hooks/useForm'
 import Form from '../components/Form'
 import Box from '../components/Box'
 
+    const campos = [
+                {
+                    name: "name",
+                    label: "Nombre",
+                    validation: value => value.length > 2,
+                    errorText: "El nombre es incorrecto"
+                }, 
+                {
+                    name:"email",
+                    label: "E-mail",
+                    validation: value => {
+                        const regexp = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)
+                        return regexp.test(value);
+                    },
+                    errorText: "El email no tiene el formato correcto"
+                }, 
+                {
+                    name:"subject",
+                    label: "Asunto",
+                    validation: value => value.length > 0,
+                    errorText: "El asunto es obligatorio"
+                }, 
+                {
+                    name:"body",
+                    label: "Mensaje",
+                    validation: value => value.length > 0,
+                    errorText: "Ingrese un texto"
+                }
+
+            ]
+
 function ContactUs() {
 
 
-    const {values, onChange, resetForm, onSubmit} = useForm({ name: "", email: "", subject: "", mesage: "" })
+    const {values, onChange, errors, resetForm, onSubmit} = useForm({ name: "", email: "", subject: "", mesage: "" }, campos)
 
-    const campos = [
-                                {
-                                    name: "name",
-                                    label: "Nombre",
-                                    validation: value => value.length > 2,
-                                    errorText: "El nombre es incorrecto"
-                                }, 
-                                {
-                                    name:"email",
-                                    label: "E-mail",
-                                    validation: value => {
-                                        const regexp = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)
-                                        return regexp.test(value);
-                                    },
-                                    errorText: "El email no tiene el formato correcto"
-                                }, 
-                                {
-                                    name:"subject",
-                                    label: "Asunto",
-                                    validation: value => value.length > 0,
-                                    errorText: "El asunto es obligatorio"
-                                }, 
-                                {
-                                    name:"body",
-                                    label: "Mensaje",
-                                    validation: value => value.length > 0,
-                                    errorText: "Ingrese un texto"
-                                }
 
-                            ]
 
     return (
     <Container as="main">
@@ -50,7 +52,9 @@ function ContactUs() {
                 values={values} 
                 onChange={onChange} 
                 onSubmit={onSubmit}
-                inputsArray={campos} />
+                inputsArray={campos} 
+                errors={errors}
+                />
         </Box>
     </Container>
   )

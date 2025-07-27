@@ -5,15 +5,6 @@ import { useForm } from '../hooks/useForm'
 import Form from '../components/Form'
 import Box from '../components/Box'
 
-function Alta() {
-
-    const {values, onChange, resetForm, onSubmit}  = useForm({
-        name: "",
-        price: 0,
-        stock: 0,
-        mesage: ""
-    })
-
 const campos = [
     {
         name: "name",
@@ -48,14 +39,20 @@ const campos = [
     {
         name: "shortDescription",
         label: "Descripción Corta",
+        validation: value => value.length > 3,
+        errorText: "La Descripción  Corta debe tener al menos 4 caracteres"
     }, 
     {
         name: "largeDescription",
         label: "Descripción Larga",
+        validation: value => value.length > 3,
+        errorText: "La Descripción  Larga debe tener al menos 4 caracteres"
     }, 
     {
         name: "freeDelivery",
         label: "Envio Gratis",
+        validation: value => value.length > 3,
+        errorText: "El freeDelivery  Corta debe tener al menos 4 caracteres"
     }, 
     {
         name: "ageFrom",
@@ -73,6 +70,17 @@ const campos = [
     ]
 
 
+
+function Alta() {
+
+    const {values, errors,  onChange, resetForm, onSubmit}  = useForm({
+        name: "",
+        price: 0,
+        stock: 0,
+        mesage: ""
+    }, campos)
+
+
   return (
     <Container as="main">
         <Text as="h2" className="">Alta de producto</Text>
@@ -82,7 +90,9 @@ const campos = [
                 values={values} 
                 onChange={onChange} 
                 onSubmit={onSubmit}
-                inputsArray={campos} />
+                inputsArray={campos} 
+                   errors={errors}
+                   />
         </Box>
     </Container>
   )
