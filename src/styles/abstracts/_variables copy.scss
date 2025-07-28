@@ -10,32 +10,18 @@ $color5: #CD0B30ff;
 $color6: #33657130;
 $color7: #551055;
 
-$color1: #2C3E50; // primario
-$color2: #3498DB; // secundario
-$color3: #27AE60; // exito
-$color4: #F39C12; // advertencia
-$color5: #E74C3C; // error
-$color6: #F4F6F7; // fondo
-$color7: #2C3E50; // texto principal
-
-$color-primary: #2C3E50;
-$hover-primary: darken($color-primary, 10%);
-$color-secondary: #3498DB;
-$color-success: #27AE60;
-$color-error: #E74C3C;
-$color-background: #F4F6F7;
-$color-text: #2C3E50;
-$color-text-header: #c2dbe7;
-$light-color: white;
-$color-hover-bg: rgba(255, 255, 255, 0.1);
-$white: #FFFFFFff;
-$black: #3E4345ff;
-
-$color-card-bg: white;      // fondo de la card
-
-$color-muted: #7F8C8D;
 
 $shadow-elevated: 0px 3px 3px 3px rgba(150, 150, 0, 0.5);
+$overlay-color: $color3; 
+$primary-color:  $color1;
+$secondary-color:$color2;
+$terciary-color: $color3;
+$card-color: $color7;
+$alert-color: $color5;
+$navbar-bg-color: $color6;
+$letters_primary: $color4;
+
+$font_color_primary:$color5;
 
 $btn-input-border-width: 1px;
 $btn-input-border-style: solid;

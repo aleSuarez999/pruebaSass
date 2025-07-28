@@ -25,13 +25,11 @@ a:hover {
 body {
   margin: 1rem 0;
   display: flex;
-  //place-items: center;
   min-width: 320px;
   min-height: 100vh;
   width: 100%;
-  background-color: $primary-color;
-  background-color: aqua;
-  //@include create-container-width();  
+  background-color: $color-background;
+
 }
 
 h1 {
@@ -39,7 +37,7 @@ h1 {
   line-height: 1.1;
   margin: 0.5rem 0;
 }
-
+/*
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -52,3 +50,4 @@ h1 {
     background-color: #f9f9f9;
   }
 }
+*/

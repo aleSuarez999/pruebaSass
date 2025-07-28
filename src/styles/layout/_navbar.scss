@@ -3,10 +3,10 @@
 
 .header__container{
     align-items: center;
-    background-color: $navbar-bg-color;
+    //background-color: $navbar-bg-color;
+    background-color: $color-primary;
+    color: $color-text-header;
     width: 100%;
-    //position: fixed;
-    //top: 0;
     nav{
         display: flex;
         gap: 1rem;
@@ -16,7 +16,12 @@
         a {
             padding: 1rem;
             font-weight: 800;
+            color: $color-text-header;
+            margin: 0 1rem;
 
+            &:hover {
+            color: $color-secondary;
+            }
         }
         @media screen and (max-width: map.get($grid-breakpoints, md)) {
             display: none;
