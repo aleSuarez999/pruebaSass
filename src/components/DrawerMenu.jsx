@@ -14,7 +14,7 @@ function DrawerMenu({
             createPortal(
                 <div className='drawer__container' role='button' onClick={closeMenu} >
                     <div className='drawer__content' onClick={e => e.stopPropagation()} >
-                        <Button className="drawer__close" onClick={closeMenu} value="Cerrar" label={<FontAwesomeIcon icon={faClose} />}  />
+                        <Button className="drawer__close" onClick={closeMenu} value="Cerrar" label={<FontAwesomeIcon icon={faClose} size='xl' />}  />
                             
                         
                         {children}

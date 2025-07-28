@@ -1,12 +1,14 @@
+@use "sass:map";
+@use "../abstracts/variables" as *;
 
 .drawer__container {
    position: fixed;
     top: 0;
     left: 0;
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: left;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color:$color3;
     
     height: 100vh;
     width: 100vw;
@@ -18,14 +20,43 @@
         color: black;
         width: 100vw;
         min-height: 50vh;
+        padding: 1.5rem;
         //overflow-y: auto;
         @media screen and (max-width: map.get($grid-breakpoints, md)){
             width: 30rem;
         }
-        .modal__close {
-         background-color: transparent;
-         border: none;
+        .drawer__close {
+        
+         background-color: $color6;
+         border: 1px solid white;
+         padding: 0.5rem;
+         border-radius: .5rem;
+         color: $primary-color;
+         
+        }
+ 
+
+    }
+}
+.navbar__drawer-menu{
+    ul{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        li {
+            list-style: none;
+            &:hover{
+                 background-color: $primary-color;
+            }
+            a{
+                text-decoration: none;
+                color: white;
+                &:hover{
+                    color: black;
+                   
+                }
+             
+            }
         }
     }
-  
 }

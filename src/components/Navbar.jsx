@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import Button from './Button'
 import DrawerMenu from './DrawerMenu'
+import Aside from './Aside'
 
 function Navbar() {
 
@@ -29,13 +30,28 @@ function Navbar() {
               <NavLink> <Cart /></NavLink>
               <Button 
                className="btn btn__primary btn__solid navbar__menu-button" 
-               label={<FontAwesomeIcon icon={faBars} size='xl' />} />
+               label={<FontAwesomeIcon icon={faBars} size='xl' />} 
+               onClick={() => setopenMenuDrawer(true)}
+               />
                 
              
                 
             </Box>
         </div>
-        <DrawerMenu></DrawerMenu>
+        <DrawerMenu show={openMenuDrawer} closeMenu={() => setopenMenuDrawer(false)}>
+
+            <Box as="nav" className="navbar__drawer-menu">
+              <ul>
+                <li><NavLink to="/Alta" onClick={() => setopenMenuDrawer(false)} >Alta</NavLink></li>
+                <li><NavLink to="/Contacto" onClick={() => setopenMenuDrawer(false)}>Contacto</NavLink></li>
+                <li><NavLink to="/Nosotros" onClick={() => setopenMenuDrawer(false)}>Nosotros</NavLink></li>
+                <li><NavLink to="/" onClick={() => setopenMenuDrawer(false)}>Productos</NavLink></li>
+                </ul>
+               
+            </Box>
+
+              <Aside />
+        </DrawerMenu>
     </header>
   )
 }
