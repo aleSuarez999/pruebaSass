@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Container from '../components/Container'
 import Text from '../components/Text'
 import { useForm } from '../hooks/useForm'
 import Form from '../components/Form'
 import Box from '../components/Box'
+import { postProducto } from '../utils/api'
+
+function Alta() {
 
 const campos = [
     {
@@ -14,7 +17,7 @@ const campos = [
         errorText: "El nombre del producto es muy corto, escriba mas de 2 letras"
     }, 
     {
-        name: "price",
+        name: "amount",
         type: "number", 
         label: "Precio",
         validation: value => value > 0,
@@ -46,13 +49,15 @@ const campos = [
         name: "shortDescription",
         type: "text", 
         label: "Descripción Corta",
-        validation: value => true
+        validation: value => (value.length > 3 && value.length < 30),
+        errorText: "La descripcion corta debe tener entre 3 y 30 caracteres"
     }, 
     {
         name: "largeDescription",
         type: "text", 
         label: "Descripción Larga",
-        validation: value => true
+        validation: value => (value.length > 3 && value.length < 30),
+        errorText: "La descripcion corta debe tener entre 3 y 300 caracteres"
     }, 
     {
         name: "freeDelivery",
@@ -66,44 +71,88 @@ const campos = [
         type: "select",
         from: 1,
         to: 10,
-        label: "Edad Desde:",
+        label: "Edad Desde",
         validation: value => true
     }, 
     {
         name: "ageTo",
         type: "select",
         from: 1,
-        to: 10,
-        label: "Edad Hasta:",
+        to: 20,
+        depends: "ageFrom",
+        label: "Edad Hasta",
         validation: value => true
     }
-
+    , 
+    {
+        name: "image",
+        type: "text",
+        label: "Imagen:",
+        validation: value => {
+        const regexp = new RegExp(/\.(jpg|jpeg|webp|png)$/i);
+           // console.log(regexp.test(value))
+            return regexp.test(value) },
+        errorText: "No es una imagen valida los formatos permitidos son jpg|jpeg|webp|png"
+    }
     ]
 
-function Alta() {
-
+   
     const {values, errors,  onChange, onBlur, resetForm, onSubmit}  = useForm({
         name: "",
-        price: 0,
+        amount: 0,
         stock: 1,
-        mesage: "",
         ageFrom: 1,
-        ageTo: 10
+        brand: "",
+        category: "",
+        ageTo: 10,
+        shortDescription: "",
+        largeDescription: "", // mal iniciado en mockapi
+        image: ""
     }, campos)
 
+    const [bigErrorMessage, setbigErrorMessage] = useState("")
+    
+    
+    const handleSubmit = (e) => {
+            e.preventDefault()
+            console.log(errors)
+            setbigErrorMessage("")
+            if (Object.values(errors).every(val => !val))
+            {
+           
+                postProducto(values)
+                    .then(alert("Producto dado de alta"))
+                    .catch(err => console.error(err))
+                    .finally(
+                        {
+                            resetForm
+                            
+                        }
+                    )
+                }
+            
+            else
+            {
+                setbigErrorMessage("El formulario no pudo ser enviado, revise los requerimientos de cada campo")
+                console.error("Revise los errores del formulario")
+                const timer = setTimeout(() => {  setbigErrorMessage("") }, 3000);
+                return () => clearTimeout(timer);
+            }
+        }
 
   return (
     <Container as="main">
         <Text as="h2" className="">Alta de producto</Text>
+        <Box as="span" className={`errorMessage ${(bigErrorMessage !== "") ? "mostrar" : "ocultar"} `} >{bigErrorMessage}</Box>
         <Box className='product__grid'>
             
              <Form
                 values={values} 
                 onChange={onChange} 
                 onBlur={onBlur} 
-                onSubmit={onSubmit}
+                onSubmit={handleSubmit}
                 inputsArray={campos} 
-                   errors={errors}
+                errors={errors}
                    />
         </Box>
     </Container>

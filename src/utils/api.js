@@ -9,3 +9,23 @@ export const getProducts = async () => {
     //console.log (resp.data)
     return resp.data
 }
+
+export const postContact = async (body) => {
+    const resp = await axiosInstance.post("/contacts", body)
+    return resp.data
+
+
+} 
+
+export const postProducto = async (body) => {
+    const resp = await axiosInstance.post("/Producto", body)
+    return resp.data
+
+
+} 
+
+export const getContacts = async () => {
+    const resp = await axiosInstance.get("/contacts")
+    //console.log (resp.data)
+    return resp.data
+}

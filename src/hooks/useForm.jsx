@@ -27,8 +27,7 @@ export const useForm = (initialValues, campos) => {
 
       const onBlur = ({ target }) => { // uso para el blur porque lo pide el ejercicio
      
-        //alert("llega")
-        const campo = campos.filter( obj => obj.name === target.name )[0]
+         const campo = campos.filter( obj => obj.name === target.name )[0]
 
         if (campo && campo.validation(target.value))
         {
@@ -36,7 +35,6 @@ export const useForm = (initialValues, campos) => {
         }
         else
         {
-        // console.log("no valido", campo.errorText)
             setErrors({ ...errors, [campo.name]: campo.errorText} )
         }
     }
