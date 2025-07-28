@@ -33,7 +33,7 @@ const [cantidadTotal, setTotal] = useState(0)
         {
           (cantidadTotal > 0) && (<div className="cart__badge" role='button' onClick={() => setShowModal(true)}   >{cantidadTotal}</div>)
           }
-          <FontAwesomeIcon icon={faShoppingCart} className='faShopping' color='Blue'  size="xl"/>
+          <FontAwesomeIcon icon={faShoppingCart} className='faShopping' color='cian'  size="xl"/>
       </div>
       
       <Modal showModal={showModal} closeModal={() => setShowModal(false)} >

@@ -27,8 +27,8 @@ function Form({
         inputsArray.map(
           ({name, label ,type, to, from}) => 
           
-            <Box key={name} className="form__input-group">
-                <Text as="label" className="form__label" htmlFor={name}>{label}
+            <Box key={name} className={`form__input-group ${ (type == "checkbox") ? "d-flex align-center w-10":"" }`} >
+                <Text as="label" className="form__label" htmlFor={name}>{label}  </Text>
                   { 
                   
                     (type == "select") ? (
@@ -51,9 +51,9 @@ function Form({
                   
                   }
  
-                  <Text as='p' className="form__error" >{errors[name]}</Text>
+                  {errors[name] && <Text as='p' className="form__error" >{errors[name]}</Text>}
 
-                </Text>
+              
             </Box>
        )}
 

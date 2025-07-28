@@ -2,8 +2,14 @@
 @use "../abstracts/variables" as *;
 
 .header__container{
+    align-items: center;
+    background-color: $navbar-bg-color;
+    width: 100%;
+    //position: fixed;
+    //top: 0;
     nav{
         display: flex;
+        gap: 1rem;
         height: 50px;
         right: 0;
         justify-content: space-between;
@@ -17,7 +23,23 @@
             
         }
     }
-    .navbar__menu-button{
+     .navbar__menu-mobile{
+    
+       display: flex;
+       align-items: center;
+       gap: 1rem;
+       .navbar__menu-button{
+        position: relative;
+        background-color: transparent;
+        height: 100%;
+       
+    }
+        @media screen and (min-width: map.get($grid-breakpoints, sm)) {
+           display: none;
+            
+        }
+
 
     }
+ 
 }
