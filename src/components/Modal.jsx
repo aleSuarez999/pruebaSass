@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import Button from './Button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -9,6 +9,24 @@ function Modal({
     closeModal,
     children
 }) {
+    /*cierra con escape*/
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (e.key === 'Escape') {
+            closeModal();
+            }
+        };
+
+        if (showModal) {
+            document.addEventListener('keydown', handleKeyDown);
+        }
+
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [showModal, closeModal]); 
+
+
     return (
         showModal ? (
             createPortal(

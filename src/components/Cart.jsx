@@ -26,6 +26,11 @@ const [cantidadTotal, setTotal] = useState(0)
 
     }, [shoppCart])
   
+
+
+
+  // Cleanup: Remove event listener when modal closes or component unmounts
+ 
   //console.log(shoppCart)
   return (
    <>
@@ -77,7 +82,9 @@ const [cantidadTotal, setTotal] = useState(0)
       </Modal>
 
     </>
+     
   )
+ 
 }
 
 export default Cart
