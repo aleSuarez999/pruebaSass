@@ -111,7 +111,7 @@ const campos = [
     }, campos)
 
     const [bigErrorMessage, setbigErrorMessage] = useState("")
-    
+    /*
      const handleSubmit = (e) => {
         e.preventDefault()
          // esto es porque me mandan un formulario sin pasar 
@@ -122,6 +122,15 @@ const campos = [
         })
         console.log(ctaError)
         if (ctaError === 0)
+            preSubmit(e)
+        else
+            alertMessage()
+    }
+    */
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+        if (campos.every(input => input.validation(values[input.name])))
             preSubmit(e)
         else
             alertMessage()

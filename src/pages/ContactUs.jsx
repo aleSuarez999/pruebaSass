@@ -74,13 +74,16 @@ const alertMessage = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
          // esto es porque me mandan un formulario sin pasar 
+         /*
         let ctaError = 0;
         campos.map(obj => {
             if (!obj.validation(values[obj.name]))
                 ctaError += 1
         })
-        console.log(ctaError)
-        if (ctaError === 0)
+        */
+
+        //if (ctaError === 0)
+        if (campos.every(input => input.validation(values[input.name])))
             preSubmit(e)
         else
             alertMessage()
