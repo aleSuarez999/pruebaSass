@@ -28,7 +28,10 @@
 }
 
 .cart-message{
-    color: blue;
+    color: $color-success;
+    .deleteItem{
+        color: $color-error;
+    }
 }
 
 .oculto {

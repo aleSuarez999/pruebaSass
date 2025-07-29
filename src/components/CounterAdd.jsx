@@ -14,12 +14,9 @@ function CounterAdd(prod) { // prod = { aa=xx, bb=xx, ...}
     
     useEffect(() => {
       
-      //setContador(prodEncontrado.cantidad)
-      //setContador(prod.cantidad)
-      if (prodEncontrado?.cantidad !== contador){
+     if (prodEncontrado?.cantidad !== contador){
           setContador(prodEncontrado?.cantidad || 0)
-        //  console.log("PROD",prod)
-      //    console.log("PRODCANT",prod.cantidad) 
+   
       }
      
     }, [shoppCart])
@@ -31,8 +28,6 @@ function CounterAdd(prod) { // prod = { aa=xx, bb=xx, ...}
         }
     }, [contador])
     
-
-    //console.log(prod) // viene el producto completo
 
   const increment = () => {
           setContador(contador + 1)
@@ -56,7 +51,7 @@ function CounterAdd(prod) { // prod = { aa=xx, bb=xx, ...}
               onClick={increment}  
               disabled={contador > 0} 
           />
-          <span  className='cart-message d-flex jsc' >{addMessage}{(addMessage) && (<FontAwesomeIcon role='button' icon={faTrashCan} onClick={deleteItem} />)}</span>
+          <span  className='cart-message d-flex jcsa mt-1' >{addMessage}{(addMessage) && (<span className='deleteItem'><FontAwesomeIcon role='button' icon={faTrashCan} onClick={deleteItem} /></span>)}</span>
         </Box>
 
   </>
