@@ -15,7 +15,9 @@ function CartProvider({children}) {
       //.finally(() => console.log("Productos Cargados en Context"))
     }, [])
 
-    
+    const resetCart = () => {
+      setshoppCart([]);
+    }
 
     const [shoppCart, setshoppCart] = useState([]); // [{ producto: {}, cantidad: 1}, { producto: {} y cantidad: 1}]
 /*
@@ -68,7 +70,8 @@ function CartProvider({children}) {
         <CartContext.Provider value={{
           products, 
           shoppCart,
-          cartModif
+          cartModif,
+          resetCart
           }}>
             {children}
         </CartContext.Provider>

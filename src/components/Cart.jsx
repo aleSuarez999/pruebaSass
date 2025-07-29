@@ -11,7 +11,7 @@ import Button from './Button'
 
 function Cart() {
 const [showModal, setShowModal] = useState(false)
-const {shoppCart} = useContext(CartContext)
+const {shoppCart, resetCart} = useContext(CartContext)
 const [cantidadTotal, setTotal] = useState(0)
 
   
@@ -30,6 +30,7 @@ const [cantidadTotal, setTotal] = useState(0)
   
     const confirmCart = () => {
       alert("Compra Confirmada")
+      resetCart()
       
     }
 
@@ -84,7 +85,7 @@ const [cantidadTotal, setTotal] = useState(0)
               </div>
         </div>
         <div className='confirm__container d-flex jcc'>
-            <Button className="btn" onClick={confirmCart} label='Confirmar Compra' />
+            <Button className="btn" onClick={confirmCart} label='Confirmar Compra'  disabled={(costoTotal == 0)}  />
         </div>
       </Modal>
 
