@@ -3,7 +3,7 @@
 @use "../abstracts/variables" as *;
 nav{
     a.active {
-    color: $active-link;
+   color: $active-link;
     }
     a.pending {
     color: blue;
