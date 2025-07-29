@@ -49,14 +49,14 @@ const campos = [
         name: "shortDescription",
         type: "text", 
         label: "Descripción Corta",
-        validation: value => (value.length > 3 && value.length < 30),
+        validation: value => (value.length > 3 && value.length < 50),
         errorText: "La descripcion corta debe tener entre 3 y 30 caracteres"
     }, 
     {
         name: "largeDescription",
         type: "text", 
         label: "Descripción Larga",
-        validation: value => (value.length > 3 && value.length < 30),
+        validation: value => (value.length > 3 && value.length < 300),
         errorText: "La descripcion corta debe tener entre 3 y 300 caracteres"
     }, 
     {
@@ -112,10 +112,24 @@ const campos = [
 
     const [bigErrorMessage, setbigErrorMessage] = useState("")
     
+     const handleSubmit = (e) => {
+        e.preventDefault()
+         // esto es porque me mandan un formulario sin pasar 
+        let ctaError = 0;
+        campos.map(obj => {
+            if (!obj.validation(values[obj.name]))
+                ctaError += 1
+        })
+        console.log(ctaError)
+        if (ctaError === 0)
+            preSubmit(e)
+        else
+            alertMessage()
+    }
     
-    const handleSubmit = (e) => {
-            e.preventDefault()
-            console.log(errors)
+    const preSubmit = (e) => {
+          
+           
             setbigErrorMessage("")
             if (Object.values(errors).every(val => !val))
             {
@@ -133,12 +147,17 @@ const campos = [
             
             else
             {
-                setbigErrorMessage("El formulario no pudo ser enviado, revise los requerimientos de cada campo")
-                console.error("Revise los errores del formulario")
-                const timer = setTimeout(() => {  setbigErrorMessage("") }, 3000);
-                return () => clearTimeout(timer);
+                alertMessage
             }
         }
+
+const alertMessage = () => {
+    setbigErrorMessage("El formulario no pudo ser enviado, revise los requerimientos de cada campo")
+    console.error("Revise los errores del formulario")
+    const timer = setTimeout(() => {  setbigErrorMessage("") }, 3000);
+    return () => clearTimeout(timer);
+}
+
 
   return (
     <Container as="main">
@@ -150,6 +169,7 @@ const campos = [
                 values={values} 
                 onChange={onChange} 
                 onBlur={onBlur} 
+                resetForm={resetForm} 
                 onSubmit={handleSubmit}
                 inputsArray={campos} 
                 errors={errors}

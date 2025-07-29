@@ -3,6 +3,8 @@ import Text from '../components/Text'
 
 export default function Nosotros() {
   return (
-    <Text as="h2" text="Contacto" />
+    <div className='product__grid'>
+      <Text as="h2" >Nosotros</Text>
+    </div>
   )
 }

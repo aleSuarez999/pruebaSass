@@ -1,3 +1,5 @@
+
+@use "sass:color";
 $grid-columns: 12;
 $cardWidth: 210px;
 
@@ -19,10 +21,13 @@ $color6: #F4F6F7; // fondo
 $color7: #2C3E50; // texto principal
 
 $color-primary: #2C3E50;
-$hover-primary: darken($color-primary, 10%);
+//$hover-primary: darken($color-primary, 10%);
+$hover-primary: color.adjust($color-primary, $lightness: -10%);
 $color-secondary: #3498DB;
 $color-success: #27AE60;
 $color-error: #E74C3C;
+$shopCart-color: #E74C3C;
+$active-link: rgb(212, 136, 136);;
 $color-background: #F4F6F7;
 $color-text: #2C3E50;
 $color-text-header: #c2dbe7;

@@ -16,9 +16,13 @@ function Navbar() {
   return (
     <header className='header__content' >  
         <div className='header__container'>
-              <NavLink to="/" >
+           <NavLink to="/" > 
+              <img src="styles/img/logo.png" />
+            </NavLink>
+            <NavLink to="/" >
+               
                 <Text as="h1" > Juguetería Cósmica</Text>
-              </NavLink>
+            </NavLink>
             <Box as="nav">
             
                 <NavLink to="/Alta" >Alta</NavLink>

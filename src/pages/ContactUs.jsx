@@ -47,9 +47,8 @@ function ContactUs() {
     const {values, onChange, onBlur,errors, resetForm, onSubmit} = useForm({ name: "", email: "", subject: "", message: "" }, campos)
     const [bigErrorMessage, setbigErrorMessage] = useState("")
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        console.log(values)
+    const preSubmit = (e) => {
+       
         setbigErrorMessage("")
         if (Object.values(errors).every(val => !val))
         {
@@ -60,11 +59,31 @@ function ContactUs() {
         }
         else
         {
-            console.log("hay errores")
-            setbigErrorMessage("El formulario no pudo ser enviado, revise los requerimientos de cada campo")
-            const timer = setTimeout(() => {  setbigErrorMessage("") }, 3000);
-            return () => clearTimeout(timer);
+            alertMessage
         }
+    }
+
+const alertMessage = () => {
+    setbigErrorMessage("El formulario no pudo ser enviado, revise los requerimientos de cada campo")
+    console.error("Revise los errores del formulario")
+    const timer = setTimeout(() => {  setbigErrorMessage("") }, 3000);
+    return () => clearTimeout(timer);
+}
+
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+         // esto es porque me mandan un formulario sin pasar 
+        let ctaError = 0;
+        campos.map(obj => {
+            if (!obj.validation(values[obj.name]))
+                ctaError += 1
+        })
+        console.log(ctaError)
+        if (ctaError === 0)
+            preSubmit(e)
+        else
+            alertMessage()
     }
     
     return (

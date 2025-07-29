@@ -22,19 +22,19 @@ function Card({
 
   return (
     
-      <div  className="card__container col-12 col-xs-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3" >
-          <img src={image} className="card__img" alt="..." />
+   
+         
           
-          <div className="card__body">
-  
+          <Box className="card__body">
+              <img src={image} className="card__img" alt="..." />
               <Text as="p" className="card__title">{name}</Text>
               <Text as="p" className="card__category">{category}</Text> 
-              <Text as="p" className="precio">{amount} </Text>
+              <Text as="p" className="precio">{`$ ${amount}`} </Text>
               <Box className="d-flex counter__container jcc">
                 <CounterAdd prod={prod} />
               </Box>
-          </div>
-    </div>
+          </Box>
+    
   )
 }
 

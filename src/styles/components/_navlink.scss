@@ -1,6 +1,9 @@
+@use "sass:map";
+@use "sass:color";
+@use "../abstracts/variables" as *;
 nav{
     a.active {
-    color: rgb(129, 46, 46);
+    color: $active-link;
     }
     a.pending {
     color: blue;
