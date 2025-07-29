@@ -7,12 +7,14 @@ import Modal from './Modal'
 import Text from './Text'
 import Counter from './Counter'
 import Box from './Box'
+import Button from './Button'
 
 function Cart() {
 const [showModal, setShowModal] = useState(false)
 const {shoppCart} = useContext(CartContext)
 const [cantidadTotal, setTotal] = useState(0)
 
+  
   const costoTotal = shoppCart.reduce( // acumulador, primer parametro acc acumula, prod es el objeto a sumarizar
     (acc, prod) => acc + prod.cantidad * prod.prod.amount, 0 // 0 creo que es el indice inicial
     // esto sería el subtotal por producto
@@ -26,7 +28,10 @@ const [cantidadTotal, setTotal] = useState(0)
 
     }, [shoppCart])
   
-
+    const confirmCart = () => {
+      alert("Compra Confirmada")
+      
+    }
 
 
   // Cleanup: Remove event listener when modal closes or component unmounts
@@ -78,7 +83,9 @@ const [cantidadTotal, setTotal] = useState(0)
                     </Box>) : <Text className="d-flex jcc w-100" as="h4" > No hay productos en el carrito</Text>}
               </div>
         </div>
-
+        <div className='confirm__container d-flex jcc'>
+            <Button className="btn" onClick={confirmCart} label='Confirmar Compra' />
+        </div>
       </Modal>
 
     </>
