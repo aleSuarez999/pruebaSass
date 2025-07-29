@@ -82,7 +82,7 @@ const alertMessage = () => {
         })
         */
 
-        //if (ctaError === 0)
+        //if (ctaError === 0) // mejora con every
         if (campos.every(input => input.validation(values[input.name])))
             preSubmit(e)
         else
@@ -105,9 +105,7 @@ const alertMessage = () => {
                 />
         </Box>
 
-        <Box>
-
-        </Box>
+  
     </Container>
   )
 }

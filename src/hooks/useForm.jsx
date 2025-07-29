@@ -5,12 +5,12 @@ export const useForm = (initialValues, campos) => {
     const [values, setValues] = useState(initialValues)
     const [errors, setErrors ] = useState({})
 
-    const onChange = ({ target }) => { // uso para el blur porque lo pide el ejercicio
+    const onChange = ({ target }) => { 
         setValues({
             ...values,
             [target.name]: target.value
         })
-/*      ESTO LO PIDE EN EL ONBLUR
+/*      este codigo pasa al onblur
         const campo = campos.filter( obj => obj.name === target.name )[0]
         // devuelvo en errors el array con los mensajes para cada campo
         if (campo && campo.validation(target.value))

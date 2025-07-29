@@ -15,11 +15,6 @@ function Form({
     onSubmit
 }) {
 
- // const [select, setSelect] = useState({ label:"", name:"", from:1, to:100 })
-
-//label={label} name={name} from={from} to={to}
-//console.log(inputsArray)
-//console.log(values)
   return (
     <>
       <form  onSubmit={onSubmit} className='form  col-12 col-xs-12 col-md-10 col-lg-10 col-xl-8 col-xxl-8' >

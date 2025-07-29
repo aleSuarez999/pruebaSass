@@ -23,14 +23,9 @@ function Counter({prod}) {
     
     useEffect(() => {
       setContador(prod.cantidad)
-     // console.log("PROD",prod)
-    //  console.log("PRODCANT",prod.cantidad)
     }, [shoppCart])
     
-  
-    
 
-   // console.log(prod)
   return (
     <>
       <Box className="d-flex">

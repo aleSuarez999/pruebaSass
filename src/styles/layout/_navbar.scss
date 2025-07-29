@@ -3,7 +3,6 @@
 
 .header__container{
     align-items: center;
-    //background-color: $navbar-bg-color;
     background-color: $color-primary;
     color: $color-text-header;
     width: 100%;
@@ -56,10 +55,10 @@
                 a{
                     text-decoration: none;
                     &:hover{
-                        color: $color2;
+                        color: $color-secondary;
                     }
                       &:hover{
-                        color: $color3;
+                        color: $navbar-hover;
                     }                  
                 }
             }

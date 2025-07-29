@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-
+// contador  para agregar el producto al carrito y eliminarlo del mismo
 import Button from './Button'
 import CartContext from '../context/CartContext'
 import Box from './Box'
@@ -45,15 +45,22 @@ function CounterAdd(prod) { // prod = { aa=xx, bb=xx, ...}
   return (
     <>
       <Box >
-      
+      {
+        (contador == 0) ? 
          <Button label="Agregar al Carrito" 
             id="suma"
               onClick={increment}  
               disabled={contador > 0} 
           />
-          <span  className='cart-message d-flex jcsa mt-1' >{addMessage}{(addMessage) && (<span className='deleteItem'><FontAwesomeIcon role='button' icon={faTrashCan} onClick={deleteItem} /></span>)}</span>
-        </Box>
+          :
+           <span  className='cart-message d-flex  mt-1' >
+            {addMessage}{(addMessage)
+             && 
+             (<span className='deleteItem ml-3'><FontAwesomeIcon role='button' icon={faTrashCan} onClick={deleteItem} /></span>)}</span>
 
+        
+      }
+      </Box>
   </>
   )
 }

@@ -3,7 +3,8 @@
 $grid-columns: 12;
 $cardWidth: 210px;
 
-/* SCSS HEX */
+/* SCSS HEX */ // colores anteriores
+/*
 $color1: hsl(60, 96%, 85%);
 $color2: #7D95C6ff;
 $color3: #33BDDDFF;
@@ -19,12 +20,13 @@ $color4: #F39C12; // advertencia
 $color5: #E74C3C; // error
 $color6: #F4F6F7; // fondo
 $color7: #2C3E50; // texto principal
-
+*/
 $color-primary: #2C3E50;
-//$hover-primary: darken($color-primary, 10%);
+//$hover-primary: darken($color-primary, 10%); // mudado a color.adjust
 $hover-primary: color.adjust($color-primary, $lightness: -10%);
 $color-secondary: #3498DB;
 $color-success: #27AE60;
+$navbar-hover: #27AE60;
 $color-error: #E74C3C;
 $shopCart-color: #E74C3C;
 $active-link: rgb(212, 136, 136);;

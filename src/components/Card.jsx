@@ -21,10 +21,7 @@ function Card({
   const {increment} = useContext(CartContext)
 
   return (
-    
-   
-         
-          
+  
           <Box className="card__body">
               <img src={image} className="card__img" alt="..." />
               <Text as="p" className="card__title">{name}</Text>

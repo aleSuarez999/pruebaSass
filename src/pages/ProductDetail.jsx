@@ -15,8 +15,6 @@ function ProductDetail() {
     
   }, [])
   
-  //const producto = products.filter(prod => prod.id == id)
-  //console.log(products)
 
   return (
     <>detalle{id}{producto.name}</>

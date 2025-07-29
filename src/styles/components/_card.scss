@@ -142,7 +142,9 @@
   }
 
   .counter__container {
-  justify-content: center;
+  justify-content: space-around ;
+  height: 2rem;
+  cursor: pointer;
 }
 }
 

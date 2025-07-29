@@ -21,14 +21,12 @@
         width: 100vw;
         min-height: 50vh;
         padding: 1.5rem;
-        //overflow-y: auto;
         transition: transform 0.3s ease;
         @media screen and (max-width: map.get($grid-breakpoints, md)){
             width: 30rem;
         }
         .drawer__close {
         
-         background-color: $color6;
          background-color: transparent;
          border: 1px solid white;
          padding: 0.5rem;

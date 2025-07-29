@@ -44,8 +44,9 @@ h1 {
   font-size: 2rem;
   line-height: 1.1;
   margin: 0.5rem 0;
+  color: $color-secondary;
 }
-/*
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -58,4 +59,3 @@ h1 {
     background-color: #f9f9f9;
   }
 }
-*/

@@ -16,16 +16,16 @@ const [cantidadTotal, setTotal] = useState(0)
 
   
   const costoTotal = shoppCart.reduce( // acumulador, primer parametro acc acumula, prod es el objeto a sumarizar
-    (acc, prod) => acc + prod.cantidad * prod.prod.amount, 0 // 0 creo que es el indice inicial
+    (acc, prod) => acc + prod.cantidad * prod.prod.amount, 0 // 0  es el indice inicial
     // esto sería el subtotal por producto
   )
   
     useEffect(() => {
+      // cuando agregan o quitan elementos del carrito regenero subtotal
         setTotal ( shoppCart.reduce(
             (acc, prod) => acc + prod.cantidad, 0)
         )
         
-
     }, [shoppCart])
   
     const confirmCart = () => {
@@ -34,10 +34,6 @@ const [cantidadTotal, setTotal] = useState(0)
       
     }
 
-
-  // Cleanup: Remove event listener when modal closes or component unmounts
- 
-  //console.log(shoppCart)
   return (
    <>
       <div className='cart__container' >
@@ -60,18 +56,15 @@ const [cantidadTotal, setTotal] = useState(0)
             shoppCart.map(
               obj => 
                 <div key={obj.prod.id} className='d-flex align-center  p-0 pb-0 pt-0 ml-2'>
+
                     <img src={obj.prod.image} className='modal-image mr-2' />
-                    
                    
                     <Text as="h4"  className="d-flex w-100 jcss ml-2"  >{obj.prod.name}</Text>
                     <Counter prod={obj}  className="d-flex jcfe ml-4 "  />
                     <Text as="span"   className="d-flex  w-100 jcsa"  > {`$ ${obj.prod.amount}`}</Text>
                     <Text as="span"   className="d-flex  w-100 jcsa "  > {`$ ${obj.prod.amount * obj.cantidad}`} </Text>
                 </div>
-                
-                
-            )
-            
+             )
 
           }
               <hr />

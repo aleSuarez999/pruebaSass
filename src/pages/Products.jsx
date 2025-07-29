@@ -1,18 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Text from '../components/Text'
 import Card from '../components/Card'
-
-//import {products} from "../data/products"
+ 
 import { useParams } from 'react-router'
 import CartContext from '../context/CartContext'
 import Box from '../components/Box'
-//import { getProducts } from '../utils/api'
-
 
 export default function Products() {
    const {products} = useContext(CartContext)
 /*  
-  sin el context
+  se pasa al context
   const [products, setProducts] = useState([])
   useEffect(() => {
       getProducts()
@@ -23,7 +20,7 @@ export default function Products() {
     
   }, [])
  */
-  const {category} = useParams() // con esto leemos la categoria que viene del ruteo
+  const {category} = useParams() 
   
   const [cateProds, setCateProds] = useState([])  
   

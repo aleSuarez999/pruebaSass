@@ -6,7 +6,6 @@ import Aside from '../components/Aside'
 import Container from '../components/Container'
 
 function Layout() {
-    // children trae la pagina como children
   return (
     <>
         <Navbar />

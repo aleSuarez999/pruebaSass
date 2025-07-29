@@ -6,16 +6,7 @@
         }
     }
 }
-/*
-$aligns: (
-    aic: center,
-    aie: end,
-    aife: flex-end,
-    ais: start,
-    aifs: flex-start,
-);
-pepe
-*/
+
 @each $key, $prop in $aligns {
         .#{$key} {
             align-items: #{$prop};

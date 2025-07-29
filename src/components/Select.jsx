@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react'
 import Text from './Text'
 
 function Select({label, onChange, onBlur, name, from , to, step=1}, values) {
-
+    //objeto select solo numerico
     const [opciones, setOpciones] = useState([])
-
-    //console.log(from)
 
     useEffect(() => {
         const array = [];

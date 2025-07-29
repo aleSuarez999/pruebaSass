@@ -12,7 +12,7 @@ function CartProvider({children}) {
       getProducts()
       .then(prods => setproducts(prods))
       .catch("Error cart->", err => console.error(err))
-      //.finally(() => console.log("Productos Cargados en Context"))
+      
     }, [])
 
     const resetCart = () => {
@@ -20,17 +20,9 @@ function CartProvider({children}) {
     }
 
     const [shoppCart, setshoppCart] = useState([]); // [{ producto: {}, cantidad: 1}, { producto: {} y cantidad: 1}]
-/*
-    useEffect(() => {
-      if (shoppCart.length > 0)
-        console.log("SHOPCARTeffe: ", shoppCart)
-    }, [shoppCart])
-*/
+
     const cartModif = ({prod}, cantidad) => {
-      //console.log("llega a incrementa", prod, cantidad)
-    //  console.log("PROD: ", prod)
-    //  console.log("CANT: ", cantidad)
-    //  console.log("IDPROD: ", prod.id)
+ 
         if (!cantidad){
             
             setshoppCart(shoppCart.filter( (obj) => obj.prod.id !== prod.id ))
@@ -48,17 +40,13 @@ function CartProvider({children}) {
                                 shoppCart.map(
                                           
                                   (obj) => obj.prod.id === prod.id ? 
-                                      { prod, cantidad } : obj // si coincide reemplazo sino 
+                                      { prod, cantidad } : obj // si coincide reemplazo 
                                         
                                     ) 
                               )  
 
-                 // console.log("SHOPCARTmodif: ", shoppCart)
-
           }
         }
-
-      //console.log("shoppCart", shoppCart)
 
     }
 
