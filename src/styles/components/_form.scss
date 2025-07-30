@@ -85,6 +85,15 @@
      width: 250px;
 }
 
+.okMessage{
+     border:1px solid $color-success;
+     background-color: $color-success;
+     border-radius: 0.5rem;
+     color: $color-success;
+     padding: 1rem;
+     flex-wrap: wrap;
+     width: 250px;
+}
 .mostrar{
     visibility: visible;
     color: rgb(255, 255, 255);

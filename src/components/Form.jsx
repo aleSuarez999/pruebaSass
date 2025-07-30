@@ -24,9 +24,10 @@ function Form({
           
             <Box key={name} className={`form__input-group ${ (type == "checkbox") ? "d-flex align-center w-10":"" }`} >
                 <Text as="label" className="form__label" htmlFor={name}>{label}  </Text>
+             
                   { 
-                  
-                    (type == "select") ? (
+                              
+                    (type === "select") ? (
                       <Select id={name} 
                       name={name} 
                       value={values[name]} 
@@ -36,19 +37,27 @@ function Form({
                       from={from}  to={to} />
                     )
                     :
+                    (type === "textarea") ? (
+                      <textarea id={name} 
+                      name={name} 
+                     value={values[name]} 
+                      cols="40"
+                      rows="10"
+                      className='form__input' 
+                      onChange={onChange}  
+                      onBlur={onBlur}
+                       ></textarea>
+                    ):
                     (<input id={name} 
                       name={name} 
                       type={type} 
                       value={values[name]} 
+                      
                       onChange={onChange}
                       className={`form__input${errors[name] ? " with-error" : ""}`}
                       onBlur={onBlur} />)
-                  
                   }
- 
                   {errors[name] && <Text as='p' className="form__error" >{errors[name]}</Text>}
-
-              
             </Box>
        )}
 

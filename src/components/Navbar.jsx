@@ -8,6 +8,7 @@ import { faBars } from '@fortawesome/free-solid-svg-icons'
 import Button from './Button'
 import DrawerMenu from './DrawerMenu'
 import Aside from './Aside'
+import brandImage from "../assets/logo.png"
 
 function Navbar() {
 
@@ -16,7 +17,7 @@ function Navbar() {
   return (
     <header className='header__content' >  
         <div className='header__container'>
-       
+            <img src={brandImage} height="55"  />
             <NavLink to="/" >
                
                 <Text as="h1" > Juguetería Cósmica</Text>
