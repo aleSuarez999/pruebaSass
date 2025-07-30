@@ -24,9 +24,11 @@ function Navbar() {
             </NavLink>
             <Box as="nav">
             
-                <NavLink to="/Alta" >Alta</NavLink>
+
                 <NavLink to="/Contacto" >Contacto</NavLink>
                 <NavLink to="/Nosotros" >Nosotros</NavLink>
+                <NavLink to="/Alta" >Alta</NavLink>
+                <NavLink to="/MensajesRecibidos" >Mensajes</NavLink>
                 <NavLink> <Cart /></NavLink>
             </Box>
             <Box  className="navbar__menu-mobile">

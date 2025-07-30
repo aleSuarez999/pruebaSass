@@ -24,8 +24,7 @@ export const postProducto = async (body) => {
 
 } 
 
-export const getContacts = async () => {
+export const getMessages = async () => {
     const resp = await axiosInstance.get("/contacts")
-    //console.log (resp.data)
     return resp.data
 }

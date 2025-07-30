@@ -7,6 +7,7 @@ import "../styles/main.scss"
 import Layout from "../layouts/Layout"
 import Products from "../pages/Products"
 import ProductDetail from "../pages/ProductDetail"
+import MensajesRecibidos from "../pages/MensajesRecibidos"
 
 function AppRoutes() {
   return (
@@ -18,6 +19,7 @@ function AppRoutes() {
                 <Route path="/nosotros" element={<Nosotros />} />
                 <Route path="/contacto" element={<ContactUs />} />
                 <Route path="/alta" element={<Alta />} />
+                <Route path="/MensajesRecibidos" element={<MensajesRecibidos />} />
 
                 <Route path="/products/:category" element={<Products />} />
                 <Route path="/product/:id" element={<ProductDetail />} />
