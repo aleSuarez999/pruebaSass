@@ -26,7 +26,7 @@ function Aside() {
                     (cate, id) =>  
 
                  
-                        <NavLink key={id} to={`/products/${cate}`} >{cate}</NavLink>
+                        <NavLink key={id} to={`/category/${cate}`} >{cate}</NavLink>
                    
                   )
           }

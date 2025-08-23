@@ -17,12 +17,12 @@ function AppRoutes() {
             <Route element={<Layout />} >  
                 <Route index element={<Home />} />
                 <Route path="/nosotros" element={<Nosotros />} />
-                <Route path="/contacto" element={<ContactUs />} />
+                <Route path="/Contacto" element={<ContactUs />} />
                 <Route path="/alta" element={<Alta />} />
                 <Route path="/MensajesRecibidos" element={<MensajesRecibidos />} />
 
-                <Route path="/products/:category" element={<Products />} />
-                <Route path="/product/:id" element={<ProductDetail />} />
+                <Route path="/category/:category" element={<Products />} />
+                <Route path="/products/:id" element={<ProductDetail />} />
             </Route>
         </Routes>
     </BrowserRouter> 

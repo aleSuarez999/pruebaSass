@@ -8,10 +8,10 @@ function ProductDetail() {
   const [producto, setProducto] = useState({})
 
   const { id } = useParams() // leo el id que viene por el get que manda el card
-
+  console.log("PRODUCTDETAILS: ", id)
   useEffect(() => {
     
-    setProducto(  products.filter(prod => parseInt(prod.id) == parseInt(id))[0]    )
+    setProducto(  products.filter(prod => parseInt(prod.id) == parseInt(id))[0]  )
     
   }, [])
   
