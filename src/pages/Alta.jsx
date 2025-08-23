@@ -4,7 +4,7 @@ import Text from '../components/Text'
 import { useForm } from '../hooks/useForm'
 import Form from '../components/Form'
 import Box from '../components/Box'
-import { postProducto } from '../utils/api'
+import { postProducto } from '../utils/apiMongo'
 
 function Alta() {
 

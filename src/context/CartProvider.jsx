@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import CartContext from "./CartContext"
-import {getProducts} from "../utils/api"
+import {getProducts} from "../utils/apiMongo"
 
 
 

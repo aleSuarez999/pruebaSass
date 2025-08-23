@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Text from '../components/Text'
-import {getMessages} from "../utils/api"
+import {getMessages} from "../utils/apiMongo"
 export default function Products() {
 
 

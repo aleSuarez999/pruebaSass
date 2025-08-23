@@ -4,7 +4,7 @@ import Text from '../components/Text'
 import { useForm } from '../hooks/useForm'
 import Form from '../components/Form'
 import Box from '../components/Box'
-import { postContact } from '../utils/api'
+import { postContact } from '../utils/apiMongo'
 import MensajeEnvio from '../components/MensajeEnvio'
 
     const campos = [

@@ -1,3 +1,4 @@
+// no se usa este archivo es anterior al mockapi
 import React, { useEffect, useState } from 'react'
 import Text from '../components/Text'
 import Card from '../components/Card'

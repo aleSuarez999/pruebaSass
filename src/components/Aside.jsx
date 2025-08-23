@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router'
-import { getProducts } from '../utils/api'
+import { getProducts } from '../utils/apiMongo'
 
 function Aside() {
 
