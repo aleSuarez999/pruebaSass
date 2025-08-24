@@ -157,17 +157,32 @@ const campos = [
 
                 postProducto(processedValues) // llamo a la api
                     .then( res => {
+                         console.log("RES->", res)
                         if (res.ok)
                         {
-                            console.log(res)
+                           
                            okMessage(true)
                            setMsg("mensaje enviado ok")
+                           resetForm
+                        }
+                        else{
+                            //console.log("res", res)
+                            console.log(res.status)
+                            switch (res.status) {
+                                case 409:
+                                        okMessage(false)
+                                        setMsg("El producto ya se encuentra en la base.")
+                                    break;
+                            
+                                default:
+                                    break;
+                            }
                         }
                     }
                         
                     )
                     .catch(err => console.error(err))
-                    .finally(resetForm)
+                    .finally()
                 }
             
             else

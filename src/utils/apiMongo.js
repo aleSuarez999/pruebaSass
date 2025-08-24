@@ -25,16 +25,23 @@ export const postContact = async (body) => {
 
 export const postProducto = async (body) => {
     //console.info("postProductoAEnviar: ", body)
-    const resp = await axiosInstance.post("/products", body)
-    //console.info("postProductoRecibido: ", resp)
-    //no llega acá cuando es duplicado
-    if (resp.data.ok)
-    {
-        console.info("Alta de producto ok")
-        return resp.data
+    try {
+        
+        const resp = await axiosInstance.post("/products", body)
+        //console.info("postProductoRecibido: ", resp)
+        //no llega acá cuando es duplicado
+        console.log("RESPUESTA: ", resp)
+        if (resp.data.ok)
+        {
+            console.info("Alta de producto ok")
+            return resp.data
+        }
+        else
+            console.error("Alta incompleta")
+    } catch (error) {
+         console.error("Alta incompleta")
+        return error
     }
-    else
-        console.error("Alta incompleta")
 
 
 } 
