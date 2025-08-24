@@ -8,18 +8,7 @@ import Box from '../components/Box'
 
 export default function Products() {
    const {products} = useContext(CartContext)
-/*  
-  se pasa al context
-  const [products, setProducts] = useState([])
-  useEffect(() => {
-      getProducts()
-      .then(data => setProducts(data))
-      .catch(err => console.error(err))
-      .finally(() =>console.log(products))
-  
-    
-  }, [])
- */
+
   const {category} = useParams() 
   
   const [cateProds, setCateProds] = useState([])  

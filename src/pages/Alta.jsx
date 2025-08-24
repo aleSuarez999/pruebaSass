@@ -88,11 +88,19 @@ const campos = [
         name: "image",
         type: "text",
         label: "Imagen:",
+        validation: value => true
+        
+        /*
+        se remueve validacion por este tipo de imagenes sin extension
+        averiguar como validar que sea imagen valida sin ver la extension
+        https://images.unsplash.com/photo-1587654780291-39c9404d746b
         validation: value => {
         const regexp = new RegExp(/\.(jpg|jpeg|webp|png)$/i);
+
            // console.log(regexp.test(value))
             return regexp.test(value) },
         errorText: "No es una imagen valida los formatos permitidos son jpg|jpeg|webp|png"
+        */
     }
     ]
 
@@ -105,8 +113,9 @@ const campos = [
         brand: "",
         category: "",
         ageTo: 10,
+        freeDelivery: false,
         shortDescription: "",
-        largeDescription: "", // mal iniciado en mockapi
+        largeDescription: "", 
         image: ""
     }, campos)
 
@@ -127,14 +136,22 @@ const campos = [
             setbigErrorMessage("")
             if (Object.values(errors).every(val => !val))
             {
-           
-                postProducto(values)
-                    .then(alert("Producto dado de alta"))
+                // extraigo freeDelivery para que no de error el mongo    
+                //console.log("valor freedelivery: ", values.freeDelivery, (values.freeDelivery === "on"))      
+                const processedValues = {
+                    ...values, 
+                    freeDelivery: (values.freeDelivery === "on")
+                }
+
+                //console.log("valores preprocesados: ", processedValues)
+                postProducto(processedValues)
+                    .then( res => alert(res)
+                        
+                    )
                     .catch(err => console.error(err))
                     .finally(
                         {
                             resetForm
-                            
                         }
                     )
                 }
@@ -152,13 +169,11 @@ const alertMessage = () => {
     return () => clearTimeout(timer);
 }
 
-
   return (
     <Container as="main">
         <Text as="h2" className="">Alta de producto</Text>
         <Box as="span" className={`errorMessage ${(bigErrorMessage !== "") ? "mostrar" : "ocultar"} `} >{bigErrorMessage}</Box>
         <Box className='product__grid'>
-            
              <Form
                 values={values} 
                 onChange={onChange} 
