@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import Box from './Box'
 
 function MensajeEnvio({
-    enviado
+    enviado,
+    msg
     
 }) {
 
@@ -13,10 +14,10 @@ function MensajeEnvio({
                 (enviado == 1) ? setClase("okMessage") : setClase("errorMessage")
               if (enviado == 1)
               {
-                 setMessage("El formulario se envió con éxito.")
+                 setMessage(msg)
               }
               else{
-                  setMessage("El formulario no pudo ser enviado, revise los requerimientos de cada campo")
+                  setMessage(msg)
 
               }
 

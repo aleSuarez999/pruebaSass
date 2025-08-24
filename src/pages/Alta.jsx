@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Container from '../components/Container'
 import Text from '../components/Text'
 import { useForm } from '../hooks/useForm'
 import Form from '../components/Form'
 import Box from '../components/Box'
 import { postProducto } from '../utils/apiMongo'
+import MensajeEnvio from '../components/MensajeEnvio'
 
 function Alta() {
 
@@ -103,8 +104,18 @@ const campos = [
         */
     }
     ]
+    const [mostrarMensaje, setMostrarMensaje] = useState(false)
+    const [enviado, setEnviado] = useState("")
+    const [msg, setMsg] = useState("")
 
-   
+   useEffect(() => {
+      if (mostrarMensaje) {
+        // si true timeout para que desaparezca en 3 segundos
+            const timer = setTimeout(() => setMostrarMensaje(false), 3000);
+            return () => clearTimeout(timer); 
+        }
+    }, [mostrarMensaje])
+
     const {values, errors,  onChange, onBlur, resetForm, onSubmit}  = useForm({
         name: "",
         amount: 0,
@@ -119,7 +130,6 @@ const campos = [
         image: ""
     }, campos)
 
-    const [bigErrorMessage, setbigErrorMessage] = useState("")
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -127,52 +137,55 @@ const campos = [
         if (campos.every(input => input.validation(values[input.name])))
             preSubmit(e)
         else
-            alertMessage()
+        {
+            setMsg("Error en el formulario, verifique los campos por favor")
+            okMessage(false)
+        }
     }
     
     const preSubmit = (e) => {
           
            
-            setbigErrorMessage("")
             if (Object.values(errors).every(val => !val))
             {
                 // extraigo freeDelivery para que no de error el mongo    
-                //console.log("valor freedelivery: ", values.freeDelivery, (values.freeDelivery === "on"))      
-                const processedValues = {
+                 const processedValues = {
                     ...values, 
                     freeDelivery: (values.freeDelivery === "on")
                 }
 
-                //console.log("valores preprocesados: ", processedValues)
-                postProducto(processedValues)
-                    .then( res => alert(res)
+
+                postProducto(processedValues) // llamo a la api
+                    .then( res => {
+                        if (res.ok)
+                        {
+                            console.log(res)
+                           okMessage(true)
+                           setMsg("mensaje enviado ok")
+                        }
+                    }
                         
                     )
                     .catch(err => console.error(err))
-                    .finally(
-                        {
-                            resetForm
-                        }
-                    )
+                    .finally(resetForm)
                 }
             
             else
             {
-                alertMessage
+                setMsg("Revise los campos del formulario")
+                okMessage(false)
+                
             }
         }
 
-const alertMessage = () => {
-    setbigErrorMessage("El formulario no pudo ser enviado, revise los requerimientos de cada campo")
-    console.error("Revise los errores del formulario")
-    const timer = setTimeout(() => {  setbigErrorMessage("") }, 3000);
-    return () => clearTimeout(timer);
+const okMessage = (estado) => {
+    setEnviado(estado) // declaro si se envio o no
+    setMostrarMensaje(true) // muestro mensaje
 }
-
   return (
     <Container as="main">
         <Text as="h2" className="">Alta de producto</Text>
-        <Box as="span" className={`errorMessage ${(bigErrorMessage !== "") ? "mostrar" : "ocultar"} `} >{bigErrorMessage}</Box>
+        {(mostrarMensaje) && <MensajeEnvio enviado={enviado} msg={msg} />}
         <Box className='product__grid'>
              <Form
                 values={values} 

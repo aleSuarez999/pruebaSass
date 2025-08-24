@@ -65,14 +65,14 @@ function ContactUs() {
         if (Object.values(errors).every(val => !val))
         {
             postContact(values)
-                .then(okMessage(true))
+                .then(okMessage(true), "Su mensaje ha sido enviado correctamente")
                
                 .catch(err => console.error(err))
                 .finally(resetForm)
         }
         else
         {
-            okMessage(false)
+            okMessage(false, "Su mensaje no ha podido enviarse, revise los campos del formulario")
         }
     }
 
