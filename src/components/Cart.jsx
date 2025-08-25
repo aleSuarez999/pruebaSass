@@ -52,13 +52,13 @@ const [shoppCartApi, setshoppCartApi] = useState(0)
                              
                              okMessage(true)
                              setMsg("Compra enviada ok")
-                             
+                             resetCart()
                           }
           })
       } catch (error) {
         console.error("ERROR AL MANDAR CARRIDO:", error)
       }
-      //resetCart()
+      //
       
     }
 
