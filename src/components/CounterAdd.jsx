@@ -10,7 +10,7 @@ function CounterAdd(prod) { // prod = { aa=xx, bb=xx, ...}
     const { cartModif , shoppCart  } = useContext(CartContext)
     const [contador, setContador] = useState(0)
     const [addMessage, setaddMessage] = useState("")
-    const prodEncontrado = shoppCart.find(obj => obj.prod.id === prod.prod.id)  
+    const prodEncontrado = shoppCart.find(obj => obj.prod._id === prod.prod._id)  
     
     useEffect(() => {
       

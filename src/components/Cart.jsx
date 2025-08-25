@@ -32,7 +32,22 @@ const [cantidadTotal, setTotal] = useState(0)
     const confirmCart = () => {
       alert("Se envia compra a mongo")
       console.info(shoppCart)
-      postCart(shoppCart)
+      try {
+        
+        postCart(shoppCart)
+         .then( res => {
+                           console.log("RES->", res)
+                          if (res.ok)
+                          {
+                             
+                             okMessage(true)
+                             setMsg("Compra enviada ok")
+                             
+                          }
+          })
+      } catch (error) {
+        console.error("ERROR AL MANDAR CARRIDO:", error)
+      }
       //resetCart()
       
     }

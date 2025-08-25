@@ -24,8 +24,8 @@ export default function Products() {
         <div className='product__grid'>
         {
             cateProds.map(data => 
-              <Box key={data.id} className="col-xs-12 col-sm-6 col-lg-4 col-xl-3">
-                <Card key={data.id} {...data} prod={data} />
+              <Box key={data._id} className="col-xs-12 col-sm-6 col-lg-4 col-xl-3">
+                <Card key={data._id} {...data} prod={data} />
               </Box>
             )
         }

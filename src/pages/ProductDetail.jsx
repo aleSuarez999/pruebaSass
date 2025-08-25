@@ -11,7 +11,7 @@ function ProductDetail() {
   console.log("PRODUCTDETAILS: ", id)
   useEffect(() => {
     
-    setProducto(  products.filter(prod => parseInt(prod.id) == parseInt(id))[0]  )
+    setProducto(  products.filter(prod => parseInt(prod._id) == parseInt(id))[0]  )
     
   }, [])
   

@@ -25,11 +25,11 @@ function CartProvider({children}) {
  
         if (!cantidad){
             
-            setshoppCart(shoppCart.filter( (obj) => obj.prod.id !== prod.id ))
+            setshoppCart(shoppCart.filter( (obj) => obj.prod._id !== prod._id ))
 
         } else {
 
-          const findProduct = shoppCart.find( (obj) => obj.prod.id === prod.id )
+          const findProduct = shoppCart.find( (obj) => obj.prod._id === prod._id )
           if (!findProduct){
               setshoppCart([  ...shoppCart, { prod, cantidad  }  ])
                         // agrego el primer producto al carrito de ese id
@@ -39,7 +39,7 @@ function CartProvider({children}) {
                   setshoppCart( 
                                 shoppCart.map(
                                           
-                                  (obj) => obj.prod.id === prod.id ? 
+                                  (obj) => obj.prod._id === prod._id ? 
                                       { prod, cantidad } : obj // si coincide reemplazo 
                                         
                                     ) 
