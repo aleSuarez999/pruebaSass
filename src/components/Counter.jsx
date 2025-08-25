@@ -22,7 +22,7 @@ function Counter({prod}) {
     }
     
     useEffect(() => {
-      setContador(prod.cantidad)
+      setContador(prod.quantity)
     }, [shoppCart])
     
 

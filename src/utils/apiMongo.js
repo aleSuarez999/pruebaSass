@@ -25,7 +25,7 @@ export const postContact = async (body) => {
 
 export const postCart = async (body) => {
     try {
-        const resp = await axiosInstance.post("/carts", body)
+        const resp = await axiosInstance.post("/cart", body)
         if (resp.data.ok)
         {
             console.info("Alta de pedido ok")

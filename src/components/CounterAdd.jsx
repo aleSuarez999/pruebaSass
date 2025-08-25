@@ -14,8 +14,8 @@ function CounterAdd(prod) { // prod = { aa=xx, bb=xx, ...}
     
     useEffect(() => {
       
-     if (prodEncontrado?.cantidad !== contador){
-          setContador(prodEncontrado?.cantidad || 0)
+     if (prodEncontrado?.quantity !== contador){
+          setContador(prodEncontrado?.quantity || 0)
    
       }
      

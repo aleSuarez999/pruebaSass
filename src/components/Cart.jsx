@@ -14,27 +14,37 @@ function Cart() {
 const [showModal, setShowModal] = useState(false)
 const {shoppCart, resetCart} = useContext(CartContext)
 const [cantidadTotal, setTotal] = useState(0)
+const [shoppCartApi, setshoppCartApi] = useState(0)
 
   
   const costoTotal = shoppCart.reduce( // acumulador, primer parametro acc acumula, prod es el objeto a sumarizar
-    (acc, prod) => acc + prod.cantidad * prod.prod.amount, 0 // 0  es el indice inicial
+    (acc, prod) => acc + prod.quantity * prod.prod.amount, 0 // 0  es el indice inicial
     // esto sería el subtotal por producto
   )
   
     useEffect(() => {
       // cuando agregan o quitan elementos del carrito regenero subtotal
         setTotal ( shoppCart.reduce(
-            (acc, prod) => acc + prod.cantidad, 0)
+            (acc, prod) => acc + prod.quantity, 0)
         )
         
+        setshoppCartApi( 
+            {
+              //creo un json cart con el array de productos
+                cart: shoppCart.map( obj =>
+                   ({
+                     _id: obj.prod._id, 
+                    quantity: obj.quantity}) ) 
+            }
+        )
     }, [shoppCart])
   
     const confirmCart = () => {
       alert("Se envia compra a mongo")
-      console.info(shoppCart)
+      console.info(shoppCartApi)
       try {
         
-        postCart(shoppCart)
+        postCart(shoppCartApi)
          .then( res => {
                            console.log("RES->", res)
                           if (res.ok)
@@ -80,7 +90,7 @@ const [cantidadTotal, setTotal] = useState(0)
                     <Text as="h4"  className="d-flex w-100 jcss ml-2"  >{obj.prod.name}</Text>
                     <Counter prod={obj}  className="d-flex jcfe ml-4 "  />
                     <Text as="span"   className="d-flex  w-100 jcsa"  > {`$ ${obj.prod.amount}`}</Text>
-                    <Text as="span"   className="d-flex  w-100 jcsa "  > {`$ ${obj.prod.amount * obj.cantidad}`} </Text>
+                    <Text as="span"   className="d-flex  w-100 jcsa "  > {`$ ${obj.prod.amount * obj.quantity}`} </Text>
                 </div>
              )
 

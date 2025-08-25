@@ -19,11 +19,11 @@ function CartProvider({children}) {
       setshoppCart([]);
     }
 
-    const [shoppCart, setshoppCart] = useState([]); // [{ producto: {}, cantidad: 1}, { producto: {} y cantidad: 1}]
+    const [shoppCart, setshoppCart] = useState([]); // [{ producto: {}, quantity: 1}, { producto: {} y quantity: 1}]
 
-    const cartModif = ({prod}, cantidad) => {
+    const cartModif = ({prod}, quantity) => {
  
-        if (!cantidad){
+        if (!quantity){
             
             setshoppCart(shoppCart.filter( (obj) => obj.prod._id !== prod._id ))
 
@@ -31,7 +31,7 @@ function CartProvider({children}) {
 
           const findProduct = shoppCart.find( (obj) => obj.prod._id === prod._id )
           if (!findProduct){
-              setshoppCart([  ...shoppCart, { prod, cantidad  }  ])
+              setshoppCart([  ...shoppCart, { prod, quantity  }  ])
                         // agrego el primer producto al carrito de ese id
 
           } else {
@@ -40,7 +40,7 @@ function CartProvider({children}) {
                                 shoppCart.map(
                                           
                                   (obj) => obj.prod._id === prod._id ? 
-                                      { prod, cantidad } : obj // si coincide reemplazo 
+                                      { prod, quantity } : obj // si coincide reemplazo 
                                         
                                     ) 
                               )  
@@ -50,7 +50,7 @@ function CartProvider({children}) {
 
     }
 
-    const decrement = (prod, cantidad) => {
+    const decrement = (prod, quantity) => {
       console.log("decremento")
     }
 
