@@ -23,6 +23,22 @@ export const postContact = async (body) => {
 
 } 
 
+export const postCart = async (body) => {
+    try {
+        const resp = await axiosInstance.post("/carts", body)
+        if (resp.data.ok)
+        {
+            console.info("Alta de pedido ok")
+            return resp.data
+        }
+        else
+            console.error(resp.data.msg)
+    } catch (error) {
+        console.error("Error en el proceso del Carrito")
+        return error
+    }
+}
+
 export const postProducto = async (body) => {
     //console.info("postProductoAEnviar: ", body)
     try {

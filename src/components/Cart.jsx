@@ -8,6 +8,7 @@ import Text from './Text'
 import Counter from './Counter'
 import Box from './Box'
 import Button from './Button'
+import { postCart } from '../utils/apiMongo'
 
 function Cart() {
 const [showModal, setShowModal] = useState(false)
@@ -29,8 +30,10 @@ const [cantidadTotal, setTotal] = useState(0)
     }, [shoppCart])
   
     const confirmCart = () => {
-      alert("Compra Confirmada")
-      resetCart()
+      alert("Se envia compra a mongo")
+      console.info(shoppCart)
+      postCart(shoppCart)
+      //resetCart()
       
     }
 
@@ -79,6 +82,7 @@ const [cantidadTotal, setTotal] = useState(0)
         </div>
         <div className='confirm__container d-flex jcc'>
             <Button className="btn" onClick={confirmCart} label='Confirmar Compra'  disabled={(costoTotal == 0)}  />
+
         </div>
       </Modal>
 
