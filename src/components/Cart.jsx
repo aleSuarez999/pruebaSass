@@ -1,4 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
+// inicio MP con la public key de prueba
+import { initMercadoPago, Wallet } from '@mercadopago/sdk-react'
+
+
+
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartFlatbedSuitcase, faCartPlus, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
@@ -9,14 +14,22 @@ import Counter from './Counter'
 import Box from './Box'
 import Button from './Button'
 import { postCart } from '../utils/apiMongo'
+import { createPreference } from '../utils/apiMp'
 
 function Cart() {
 const [showModal, setShowModal] = useState(false)
 const {shoppCart, resetCart} = useContext(CartContext)
 const [cantidadTotal, setTotal] = useState(0)
 const [shoppCartApi, setshoppCartApi] = useState(0)
-
+const [shoppCartMP, setshoppCartMP] = useState(0)
+const [preferenceId, setpreferenceId] = useState(null)
+initMercadoPago('TEST-2d377295-b034-4bff-926d-daae34649053', {
+  locale: 'es-AR'
+});
   
+
+
+
   const costoTotal = shoppCart.reduce( // acumulador, primer parametro acc acumula, prod es el objeto a sumarizar
     (acc, prod) => acc + prod.quantity * prod.prod.amount, 0 // 0  es el indice inicial
     // esto sería el subtotal por producto
@@ -37,23 +50,53 @@ const [shoppCartApi, setshoppCartApi] = useState(0)
                     quantity: obj.quantity}) ) 
             }
         )
+        setshoppCartMP( 
+            {
+              //creo un json cart con el array de productos
+              body: {
+                items: shoppCart.map( obj =>  ({
+                      id: obj.prod._id, 
+                      title: obj.prod.name,
+                      quantity: obj.quantity,
+                      unit_price: obj.prod.amount
+                  }) ),
+                  notification_url: 'https://webhook.site/your-dummy-url' 
+                }
+            }
+        )
     }, [shoppCart])
   
-    const confirmCart = () => {
+    const confirmCart =  async () => {
+      console.log("mando a mp: ", shoppCartMP)
+      // llamo al backend quien llama a la api de mp que genera el id
+       const id = await createPreference(shoppCartMP)
+        if (id)
+        {
+          console.log("recibo->", id)
+          setpreferenceId(id)
+      }
+    
+
+    } 
+
+
+
+    const confirmCart1 = () => {
+      // sin mp
       alert("Se envia compra a mongo")
       console.info(shoppCartApi)
       try {
-        
+
         postCart(shoppCartApi)
          .then( res => {
-                           console.log("RES->", res)
-                          if (res.ok)
-                          {
-                             
-                             okMessage(true)
-                             setMsg("Compra enviada ok")
-                             resetCart()
-                          }
+                  console.log("RES->", res)
+                if (res.ok)
+                {
+                    
+                    okMessage(true)
+                    setMsg("Compra enviada ok")
+                    resetCart()
+                }
           })
       } catch (error) {
         console.error("ERROR AL MANDAR CARRIDO:", error)
@@ -107,7 +150,7 @@ const [shoppCartApi, setshoppCartApi] = useState(0)
         </div>
         <div className='confirm__container d-flex jcc'>
             <Button className="btn" onClick={confirmCart} label='Confirmar Compra'  disabled={(costoTotal == 0)}  />
-
+          { (preferenceId) && <Wallet initialization={{ preferenceId: preferenceId}} /> }
         </div>
       </Modal>
 
