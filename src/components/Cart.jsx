@@ -15,6 +15,7 @@ import Box from './Box'
 import Button from './Button'
 import { postCart } from '../utils/apiMongo'
 import { createPreference } from '../utils/apiMp'
+import MensajeEnvio from '../components/MensajeEnvio'
 
 function Cart() {
 const [showModal, setShowModal] = useState(false)
@@ -23,18 +24,30 @@ const [cantidadTotal, setTotal] = useState(0)
 const [shoppCartApi, setshoppCartApi] = useState(0)
 const [shoppCartMP, setshoppCartMP] = useState(0)
 const [preferenceId, setpreferenceId] = useState(null)
+
+// para el componente MensajeEnvio
+const [mostrarMensaje, setMostrarMensaje] = useState(false)
+const [enviado, setEnviado] = useState("")
+const [msg, setMsg] = useState("")
+
+/* por ahora no va
 initMercadoPago('TEST-2d377295-b034-4bff-926d-daae34649053', {
   locale: 'es-AR'
 });
-  
+*/
 
 
-
+  const okMessage = (estado) => {
+    setEnviado(estado) // declaro si se envio o no
+    setMostrarMensaje(true) // muestro mensaje
+  }
+   
   const costoTotal = shoppCart.reduce( // acumulador, primer parametro acc acumula, prod es el objeto a sumarizar
     (acc, prod) => acc + prod.quantity * prod.prod.amount, 0 // 0  es el indice inicial
     // esto sería el subtotal por producto
   )
   
+
     useEffect(() => {
       // cuando agregan o quitan elementos del carrito regenero subtotal
         setTotal ( shoppCart.reduce(
@@ -52,6 +65,7 @@ initMercadoPago('TEST-2d377295-b034-4bff-926d-daae34649053', {
         )
         setshoppCartMP( 
             {
+              // no se usa // funciona bien el json  
               //creo un json cart con el array de productos
               body: {
                 items: shoppCart.map( obj =>  ({
@@ -65,7 +79,8 @@ initMercadoPago('TEST-2d377295-b034-4bff-926d-daae34649053', {
             }
         )
     }, [shoppCart])
-  
+  /*
+    // alternativa con boton de mp // no se usa 
     const confirmCart =  async () => {
       console.log("mando a mp: ", shoppCartMP)
       // llamo al backend quien llama a la api de mp que genera el id
@@ -78,10 +93,9 @@ initMercadoPago('TEST-2d377295-b034-4bff-926d-daae34649053', {
     
 
     } 
+  */
 
-
-
-    const confirmCart1 = () => {
+    const confirmCart = () => {
       // sin mp
       alert("Se envia compra a mongo")
       console.info(shoppCartApi)
@@ -100,10 +114,13 @@ initMercadoPago('TEST-2d377295-b034-4bff-926d-daae34649053', {
           })
       } catch (error) {
         console.error("ERROR AL MANDAR CARRIDO:", error)
+        setMsg("Se ha producido un error al guardar los datos")
+        okMessage(false)
       }
-      //
+      
       
     }
+
 
   return (
    <>

@@ -90,18 +90,7 @@ const campos = [
         type: "text",
         label: "Imagen:",
         validation: value => true
-        
-        /*
-        se remueve validacion por este tipo de imagenes sin extension
-        averiguar como validar que sea imagen valida sin ver la extension
-        https://images.unsplash.com/photo-1587654780291-39c9404d746b
-        validation: value => {
-        const regexp = new RegExp(/\.(jpg|jpeg|webp|png)$/i);
-
-           // console.log(regexp.test(value))
-            return regexp.test(value) },
-        errorText: "No es una imagen valida los formatos permitidos son jpg|jpeg|webp|png"
-        */
+ 
     }
     ]
     const [mostrarMensaje, setMostrarMensaje] = useState(false)
