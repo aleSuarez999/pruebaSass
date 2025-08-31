@@ -27,7 +27,7 @@ function MensajeEnvio({
             <Box as="span" 
             className={`${clase} ${(mensaje !== "") ? 
                 "mostrar" : 
-                "ocultar"} `} >
+                "ocultar"} d-flex asc`} >
                     {mensaje}
                     </Box>
   )

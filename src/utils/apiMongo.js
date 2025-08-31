@@ -9,16 +9,24 @@ export const getProducts = async () => {
     if (resp.data.ok)
     {
         //viene ok, y products 
-        console.info("REspuesta api Products:  ", resp.data.products)
+       // console.info("REspuesta api Products:  ", resp.data.products)
         return resp.data.products
     }
     
 }
 
 export const postContact = async (body) => {
-    const resp = await axiosInstance.post("/contacts", body)
-    console.info("REspuesta api Contacts:  ", resp)
-    return resp.data
+    //console.info("apiMongo postContact")
+    try {
+        const resp = await axiosInstance.post("/contacts", body)
+        return resp.data
+        
+    } catch (error) {
+       //console.log("error1>>>", error)
+       //console.log("error2>>>", error.response.data.errors.message)
+       return error
+    }
+    
 
 
 } 

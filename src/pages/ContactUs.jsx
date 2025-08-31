@@ -36,7 +36,7 @@ import MensajeEnvio from '../components/MensajeEnvio'
                     name:"message",
                     label: "Mensaje",
                     type: "textarea",
-                    validation: value => value.length > 2,
+                    validation: value => value.length > 10,
                     errorText: "Ingrese un mensaje"
                 }
 
@@ -48,7 +48,13 @@ function ContactUs() {
     const {values, onChange, onBlur,errors, resetForm, onSubmit} = useForm({ name: "", email: "", subject: "", message: "" }, campos)
  
     const [enviado, setEnviado] = useState("")
+    const [msg, setMsg] = useState("")
     const [mostrarMensaje, setMostrarMensaje] = useState(false)
+
+    const okMessage = (estado) => {
+    setEnviado(estado) // declaro si fue exito o no
+    setMostrarMensaje(true) // muestro mensaje
+  }
 
    useEffect(() => {
       if (mostrarMensaje) {
@@ -65,10 +71,24 @@ function ContactUs() {
         if (Object.values(errors).every(val => !val))
         {
             postContact(values)
-                .then(okMessage(true), "Su mensaje ha sido enviado correctamente")
+                .then( resp =>
+                    {
+                        console.info("INFO RESPUESTA->", resp)
+                        if (resp.ok){
+                            setMsg("Su mensaje se ha enviado. Gracias.")
+                            okMessage(true)
+                            resetForm()
+                        }
+                        else{
+                            setMsg("No se pudo enviar su mensaje.")
+                            okMessage(false)
+                            
+                        }
+                    }
+                )
                
                 .catch(err => console.error(err))
-                .finally(resetForm)
+                .finally()
         }
         else
         {
@@ -76,10 +96,6 @@ function ContactUs() {
         }
     }
 
-const okMessage = (estado) => {
-    setEnviado(estado) // declaro si se envio o no
-    setMostrarMensaje(true) // muestro mensaje
-}
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -87,13 +103,15 @@ const okMessage = (estado) => {
         if (campos.every(input => input.validation(values[input.name])))
             preSubmit(e)
         else
+        {
             okMessage(false)
+        }
     }
     
     return (
     <Container as="main">
         <Text as="h2" className="">Contáctenos</Text>
-        {(mostrarMensaje) && <MensajeEnvio enviado={enviado} />}
+        {(mostrarMensaje) && <MensajeEnvio enviado={enviado} msg={msg} />}
        
         <Box className='product__grid'>
             

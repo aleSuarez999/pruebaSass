@@ -151,8 +151,8 @@ const campos = [
                         {
                            
                            okMessage(true)
-                           setMsg("mensaje enviado ok")
-                           resetForm
+                           setMsg("Producto enviado ok")
+                           resetForm()
                         }
                         else{
                             //console.log("res", res)

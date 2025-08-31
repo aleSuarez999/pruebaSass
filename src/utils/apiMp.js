@@ -14,9 +14,9 @@ export const createPreference = async (req, res) => {
         if (resp)
         {
             //viene ok, y products
-            console.log ("reepuests: ", resp) 
+           // console.log ("reepuests: ", resp) 
             const  id  = resp.data.id
-            console.info(id)
+           //console.info(id)
             return id
             return res.json({
                 ok: true,
@@ -27,7 +27,7 @@ export const createPreference = async (req, res) => {
         
     } catch (error) {
 
-  console.log("error", error)
+          console.log("error", error)
 
         
     }

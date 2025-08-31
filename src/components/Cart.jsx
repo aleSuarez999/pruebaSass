@@ -14,7 +14,6 @@ import Counter from './Counter'
 import Box from './Box'
 import Button from './Button'
 import { postCart } from '../utils/apiMongo'
-import { createPreference } from '../utils/apiMp'
 import MensajeEnvio from '../components/MensajeEnvio'
 
 function Cart() {
@@ -22,23 +21,15 @@ const [showModal, setShowModal] = useState(false)
 const {shoppCart, resetCart} = useContext(CartContext)
 const [cantidadTotal, setTotal] = useState(0)
 const [shoppCartApi, setshoppCartApi] = useState(0)
-const [shoppCartMP, setshoppCartMP] = useState(0)
-const [preferenceId, setpreferenceId] = useState(null)
 
 // para el componente MensajeEnvio
 const [mostrarMensaje, setMostrarMensaje] = useState(false)
 const [enviado, setEnviado] = useState("")
 const [msg, setMsg] = useState("")
 
-/* por ahora no va
-initMercadoPago('TEST-2d377295-b034-4bff-926d-daae34649053', {
-  locale: 'es-AR'
-});
-*/
-
 
   const okMessage = (estado) => {
-    setEnviado(estado) // declaro si se envio o no
+    setEnviado(estado) // declaro si fue exito o no
     setMostrarMensaje(true) // muestro mensaje
   }
    
@@ -47,6 +38,13 @@ initMercadoPago('TEST-2d377295-b034-4bff-926d-daae34649053', {
     // esto sería el subtotal por producto
   )
   
+ useEffect(() => {
+      if (mostrarMensaje) {
+        // si true timeout para que desaparezca en 3 segundos
+            const timer = setTimeout(() => setMostrarMensaje(false), 3000);
+            return () => clearTimeout(timer); 
+        }
+    }, [mostrarMensaje])
 
     useEffect(() => {
       // cuando agregan o quitan elementos del carrito regenero subtotal
@@ -63,41 +61,10 @@ initMercadoPago('TEST-2d377295-b034-4bff-926d-daae34649053', {
                     quantity: obj.quantity}) ) 
             }
         )
-        setshoppCartMP( 
-            {
-              // no se usa // funciona bien el json  
-              //creo un json cart con el array de productos
-              body: {
-                items: shoppCart.map( obj =>  ({
-                      id: obj.prod._id, 
-                      title: obj.prod.name,
-                      quantity: obj.quantity,
-                      unit_price: obj.prod.amount
-                  }) ),
-                  notification_url: 'https://webhook.site/your-dummy-url' 
-                }
-            }
-        )
+       
     }, [shoppCart])
-  /*
-    // alternativa con boton de mp // no se usa 
-    const confirmCart =  async () => {
-      console.log("mando a mp: ", shoppCartMP)
-      // llamo al backend quien llama a la api de mp que genera el id
-       const id = await createPreference(shoppCartMP)
-        if (id)
-        {
-          console.log("recibo->", id)
-          setpreferenceId(id)
-      }
-    
-
-    } 
-  */
 
     const confirmCart = () => {
-      // sin mp
-      alert("Se envia compra a mongo")
       console.info(shoppCartApi)
       try {
 
@@ -106,9 +73,9 @@ initMercadoPago('TEST-2d377295-b034-4bff-926d-daae34649053', {
                   console.log("RES->", res)
                 if (res.ok)
                 {
-                    
-                    okMessage(true)
                     setMsg("Compra enviada ok")
+                    okMessage(true)
+                    
                     resetCart()
                 }
           })
@@ -132,6 +99,8 @@ initMercadoPago('TEST-2d377295-b034-4bff-926d-daae34649053', {
       </div>
       
       <Modal showModal={showModal} closeModal={() => setShowModal(false)} >
+       
+
         <div className=''>
           <div className='rotulo'>
             <Text as="span" >Producto</Text>
@@ -148,7 +117,7 @@ initMercadoPago('TEST-2d377295-b034-4bff-926d-daae34649053', {
                     <img src={obj.prod.image} className='modal-image mr-2' />
                    
                     <Text as="h4"  className="d-flex w-100 jcss ml-2"  >{obj.prod.name}</Text>
-                    <Counter prod={obj}  className="d-flex jcfe ml-4 "  />
+                    <Counter prod={obj}  className="d-flex jcfe ml-4 " color="secondary" variant="outline"  />
                     <Text as="span"   className="d-flex  w-100 jcsa"  > {`$ ${obj.prod.amount}`}</Text>
                     <Text as="span"   className="d-flex  w-100 jcsa "  > {`$ ${obj.prod.amount * obj.quantity}`} </Text>
                 </div>
@@ -158,16 +127,20 @@ initMercadoPago('TEST-2d377295-b034-4bff-926d-daae34649053', {
               <hr />
             
               <div>
+                {(mostrarMensaje) && <MensajeEnvio enviado={enviado} msg={msg} />}
                   {(costoTotal > 0) ? (
                     <Box className="cart__summary">
                       <Text as="span"  className="d-flex" >Total: </Text> 
                       <Text as="span"  className="d-flex" > {`$ ${costoTotal}`} </Text> 
-                    </Box>) : <Text className="d-flex jcc w-100" as="h4" > No hay productos en el carrito</Text>}
+                    </Box>) : <Text className="d-flex jcc w-100" as="h4" > No hay productos en el carrito  </Text>}
+                      
               </div>
         </div>
         <div className='confirm__container d-flex jcc'>
-            <Button className="btn" onClick={confirmCart} label='Confirmar Compra'  disabled={(costoTotal == 0)}  />
-          { (preferenceId) && <Wallet initialization={{ preferenceId: preferenceId}} /> }
+          {
+            // se muestra solo si hay productos
+             (costoTotal > 0) && (  <Button className="btn btn__primary btn__solid mb-3" onClick={confirmCart} label='Confirmar Compra'  disabled={(costoTotal == 0)}  /> )
+          }
         </div>
       </Modal>
 

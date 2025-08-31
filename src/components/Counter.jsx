@@ -4,13 +4,18 @@ import Button from './Button'
 import CartContext from '../context/CartContext'
 import Box from './Box'
 
-function Counter({prod}) {
+
+function Counter({prod, 
+      color = "primary", 
+      variant = "solid",
+      onClick,
+      ...props }) {
 
     const {cartModif, shoppCart} = useContext(CartContext)
     const [contador, setContador] = useState(0)
 
     const prodEncontrado = shoppCart.find(obj => obj.prod._id === prod._id)
-    console.log("prodencontrado", prodEncontrado)
+    //console.log("prodencontrado", prodEncontrado)
     const increment = () => {
         setContador(contador + 1)
         cartModif(prod, contador + 1)
@@ -29,9 +34,9 @@ function Counter({prod}) {
   return (
     <>
       <Box className="d-flex">
-        <Button id="resta" label="-" onClick={decrement} disabled={contador === 0} />
+        <Button id="resta" label="-" onClick={decrement} disabled={contador === 0}  color={color} variant={variant} />
         <Text as="span" className="d-flex pr-2 pl-1 aic" > {contador}  </Text> 
-        <Button label="+" id="suma" onClick={increment}  />
+        <Button label="+" id="suma" onClick={increment} color={color} variant={variant} />
       </Box>
   </>
   )
