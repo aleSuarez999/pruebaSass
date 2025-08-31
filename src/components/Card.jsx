@@ -10,6 +10,7 @@ function Card({
     name,
     brand,
     image,
+    img,
     category,
     amount,
     prod,
@@ -19,11 +20,11 @@ function Card({
 
   const navigate = useNavigate();
   const {increment} = useContext(CartContext)
-
+  console.log(img)
   return (
   
           <Box className="card__body">
-              <img src={image} className="card__img" alt="..." />
+              <img src={image ? image : img} className="card__img" alt="..." />
               <Text as="p" className="card__title">{name}</Text>
               <Text as="p" className="card__category">Categoria: {category}</Text> 
               <Text as="p" className="precio">{`$ ${amount}`} </Text>

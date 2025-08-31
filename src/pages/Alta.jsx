@@ -7,92 +7,98 @@ import Box from '../components/Box'
 import { postProducto } from '../utils/apiMongo'
 import MensajeEnvio from '../components/MensajeEnvio'
 
+
+const validationsUpload = {
+    name: {
+        validation: value => value.length > 2, 
+        errorText: "El nombre del producto es incorrecto"
+    },
+    amount: {
+        validation: value => value > 0, 
+        errorText: "El precio debe ser mayor a cero"
+    },
+    stock: {
+        validation: value => value > 0, 
+        errorText: "El stock debe ser mayor a cero"
+    },
+    brand: {
+        validation: value => value.length > 0, 
+        errorText: "La marca es un campo requerido"
+    },
+    category: {
+        validation: value => value.length > 3, 
+        errorText: "La categoría debe tener al menos 4 caracteres"
+    },
+    ageFrom: {
+        validation: value => value > 0, 
+        errorText: "La edad desde debe ser mayor a cero"
+    },
+    ageTo: {
+        validation: value => value > 0 && value <= 100, 
+        errorText: "La edad hasta debe ser mayor a cero y menor o igual a 100"
+    },
+}
+
+const inputsArray=[
+                            {
+                                name: "name",
+                                type: "text",
+                                label: "Nombre"
+                            },
+                            {
+                                name: "amount",
+                                type: "number",
+                                label: "Precio"
+                            },
+                            {
+                                name: "stock",
+                                type: "number",
+                                label: "Stock"
+                            },
+                            {
+                                name: "brand",
+                                type: "text",
+                                label: "Marca"
+                            },
+                            {
+                                name: "category",
+                                type: "text",
+                                label: "Categoría"
+                            },
+                            {
+                                name: "shortDescription",
+                                type: "text",
+                                label: "Descripción corta"
+                            },
+                            {
+                                name: "largeDescription",
+                                type: "text",
+                                label: "Descripción larga"
+                            },
+                            {
+                                name: "freeDelivery",
+                                type: "checkbox",
+                                label: "Envío gratis"
+                            },
+                            {
+                                name: "ageFrom",
+                                type: "number",
+                                label: "Edad desde"
+                            },
+                            {
+                                name: "ageTo",
+                                type: "number",
+                                label: "Edad hasta"
+                            },
+                            {
+                                name: "image",
+                                type: "file",
+                                label: "URL imagen"
+                            },
+                        ]
+
 function Alta() {
 
-const campos = [
-    {
-        name: "name",
-        type: "text", 
-        label: "Nombre",
-        validation: value => value.length > 2,
-        errorText: "El nombre del producto es muy corto, escriba mas de 2 letras"
-    }, 
-    {
-        name: "amount",
-        type: "number", 
-        label: "Precio",
-        validation: value => value > 0,
-        errorText: "El precio debe ser mayor a cero"
-    }, 
-    {
-        name: "stock",
-        type: "number", 
-        label: "Stock",
-        validation: value => value > 0,
-        errorText: "El precio stock ser mayor a cero"
-    }, 
-    {
-        name: "brand",
-        type: "text", 
-        label: "Marca",
-        validation: value => value.length > 3,
-        errorText: "La marca  debe tener al menos 4 caracteres"
-    }, 
-    {
-        name: "category",
-        type: "text", 
-        label: "Categoria",
-        tyle: "text", 
-        validation: value => value.length > 3,
-        errorText: "La categoría debe tener al menos 4 caracteres"
-    }, 
-    {
-        name: "shortDescription",
-        type: "text", 
-        label: "Descripción Corta",
-        validation: value => (value.length > 3 && value.length < 50),
-        errorText: "La descripcion corta debe tener entre 3 y 30 caracteres"
-    }, 
-    {
-        name: "largeDescription",
-        type: "text", 
-        label: "Descripción Larga",
-        validation: value => (value.length > 3 && value.length < 300),
-        errorText: "La descripcion corta debe tener entre 3 y 300 caracteres"
-    }, 
-    {
-        name: "freeDelivery",
-        type: "checkbox", 
-        label: "Envio Gratis",
-        validation: value => true
-
-    }, 
-    {
-        name: "ageFrom",
-        type: "select",
-        from: 1,
-        to: 10,
-        label: "Edad Desde",
-        validation: value => true
-    }, 
-    {
-        name: "ageTo",
-        type: "select",
-        from: 1,
-        to: 20,
-        depends: "ageFrom",
-        label: "Edad Hasta",
-        validation: value => true
-    }
-    , 
-    {
-        name: "image",
-        type: "text",
-        label: "Imagen:",
-        validation: value => true
- 
-    }
-    ]
     const [mostrarMensaje, setMostrarMensaje] = useState(false)
     const [enviado, setEnviado] = useState("")
     const [msg, setMsg] = useState("")
@@ -115,15 +121,15 @@ const campos = [
         ageTo: 10,
         freeDelivery: false,
         shortDescription: "",
-        largeDescription: "", 
-        image: ""
-    }, campos)
-
+        largeDescription: ""
+    }, validationsUpload)
+/*
 
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        if (campos.every(input => input.validation(values[input.name])))
+     //   if (validationsUpload.every(input => input.validation(values[input.name])))
+        if (Object.values(errors).every( val => !val )) 
             preSubmit(e)
         else
         {
@@ -131,7 +137,23 @@ const campos = [
             okMessage(false)
         }
     }
-    
+  */
+ 
+      const handleSubmit = e => {
+        e.preventDefault()
+        if (Object.values(errors).every( val => !val )) {
+            postProducto(values)
+                .then(() => {
+                        
+                           okMessage(true)
+                           setMsg("Producto enviado ok")
+                })
+                .then(() => resetForm())
+                .catch( err => console.error(err) )
+        } else {
+            console.log("Formulario inválido")
+        }
+    }
     const preSubmit = (e) => {
           
            
@@ -197,7 +219,7 @@ const okMessage = (estado) => {
                 onBlur={onBlur} 
                 resetForm={resetForm} 
                 onSubmit={handleSubmit}
-                inputsArray={campos} 
+                inputsArray={inputsArray} 
                 errors={errors}
                    />
         </Box>

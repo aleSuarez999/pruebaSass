@@ -26,7 +26,8 @@ function Form({
                 <Text as="label" className="form__label" htmlFor={name}>{label}  </Text>
              
                   { 
-                              
+                            
+                   
                     (type === "select") ? (
                       <Select id={name} 
                       name={name} 
@@ -48,11 +49,25 @@ function Form({
                       onBlur={onBlur}
                        ></textarea>
                     ):
+                    (type === "file") ? (
+                      
+                      <input id={name} 
+                      name={name} 
+                       type={type} 
+                      //value={values[name]} 
+                       value={type !== "file" ? values[name] : (values[name]) ? values[name].filename : ""} 
+                      className={`form__input${errors[name] ? " with-error" : ""}`}
+                      onChange={onChange}  
+                      onBlur={onBlur}
+                       />
+
+                    
+                    ):
                     (<input id={name} 
                       name={name} 
                       type={type} 
                       value={values[name]} 
-                      
+
                       onChange={onChange}
                       className={`form__input${errors[name] ? " with-error" : ""}`}
                       onBlur={onBlur} />)

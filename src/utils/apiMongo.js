@@ -47,28 +47,21 @@ export const postCart = async (body) => {
     }
 }
 
-export const postProducto = async (body) => {
-    //console.info("postProductoAEnviar: ", body)
-    try {
-        
-        const resp = await axiosInstance.post("/products", body)
-        //console.info("postProductoRecibido: ", resp)
-        //no llega acá cuando es duplicado
-        console.log("RESPUESTA: ", resp)
-        if (resp.data.ok)
-        {
-            console.info("Alta de producto ok")
-            return resp.data
+export const postProducto = async body => {
+    const formData = new FormData()
+
+    Object.entries(body).forEach(([key, value]) => {
+        console.log(key, value)
+        formData.append(key, value)
+    })
+    console.log(body)
+    const resp = await axiosInstance.post("/products", formData, {
+        headers: {
+            "Content-Type": "multipart/form-data"
         }
-        else
-            console.error("Alta incompleta")
-    } catch (error) {
-         console.error("Alta incompleta")
-        return error
-    }
-
-
-} 
+    })
+    return resp.data.products
+}
 
 export const getMessages = async () => {
     const resp = await axiosInstance.get("/contacts")

@@ -1,28 +1,24 @@
 import { useState } from "react"
 
-export const useForm = (initialValues, campos) => {
+export const useForm = (initialValues, validations) => {
 
     const [values, setValues] = useState(initialValues)
     const [errors, setErrors ] = useState({})
 
-    const onChange = ({ target }) => { 
+      const onChange = ({ target }) => {
+        console.log(target)
         setValues({
             ...values,
-            [target.name]: target.value
+            [target.name]: target.type === "checkbox" ? target.checked : target.type === "file" ? target.files[0] : target.value
         })
     }
 
       const onBlur = ({ target }) => { // uso para el blur porque lo pide el ejercicio
-     
-         const campo = campos.filter( obj => obj.name === target.name )[0]
-
-        if (campo && campo.validation(target.value))
-        {
-            setErrors({ ...errors, [campo.name]: ""} )
-        }
-        else
-        {
-            setErrors({ ...errors, [campo.name]: campo.errorText} )
+    
+      if (validations[target.name] && !validations[target.name].validation(target.value)) {
+            setErrors({...errors, [target.name]: validations[target.name].errorText})
+        } else {
+            setErrors({...errors, [target.name]: undefined})
         }
     }
 
