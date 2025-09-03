@@ -111,8 +111,7 @@ const [msg, setMsg] = useState("")
           </div>
           {
             shoppCart.map(
-              obj => {
-                 
+
                 <div key={obj.prod.id} className='d-flex align-center  p-0 pb-0 pt-0 ml-2'>
 
                     <img src={obj.prod.img} className='modal-image mr-2' />
@@ -121,8 +120,8 @@ const [msg, setMsg] = useState("")
                     <Counter prod={obj}  className="d-flex jcfe ml-4 " color="secondary" variant="outline"  />
                     <Text as="span"   className="d-flex  w-100 jcsa"  > {`$ ${obj.prod.amount}`}</Text>
                     <Text as="span"   className="d-flex  w-100 jcsa "  > {`$ ${obj.prod.amount * obj.quantity}`} </Text>
-                </div>}
-             )
+                </div>
+            )
 
           }
               <hr />
