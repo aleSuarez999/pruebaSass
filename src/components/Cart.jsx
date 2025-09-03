@@ -111,7 +111,7 @@ const [msg, setMsg] = useState("")
           </div>
           {
             shoppCart.map(
-
+              (obj) =>
                 <div key={obj.prod.id} className='d-flex align-center  p-0 pb-0 pt-0 ml-2'>
 
                     <img src={obj.prod.img} className='modal-image mr-2' />
