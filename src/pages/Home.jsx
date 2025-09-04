@@ -8,7 +8,7 @@ import Box from '../components/Box'
 export default function Home() {
   
   const {products} = useContext(CartContext)
-
+ 
   return (
     
       <>    
