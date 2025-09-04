@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router'
 import CartContext from '../context/CartContext';
 import CounterAdd from './CounterAdd';
 import Box from './Box';
+import freeDelivery from '../assets/freeDelivery'
+
 
 function Card({
     id,
@@ -25,7 +27,7 @@ function Card({
       <>
          
           <Box className="card__body">
-             {(prod.freeDelivery) && <img src="./src/img/freeDelivery01.png" className='freeDelivery'/>}
+             {(prod.freeDelivery) && <img src={freeDelivery} className='freeDelivery'/>}
               <img src={image ? image : img} className="card__img" alt="..." />
             
               <Text as="p" className="card__title">{name}</Text>
