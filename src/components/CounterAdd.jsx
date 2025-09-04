@@ -30,7 +30,7 @@ function CounterAdd(prod) { // prod = { aa=xx, bb=xx, ...}
     
 
   const increment = () => {
-          alert("llega aca")
+        
           setContador(contador + 1)
           cartModif(prod, contador + 1)
           setaddMessage("Agregado al Carrito")
