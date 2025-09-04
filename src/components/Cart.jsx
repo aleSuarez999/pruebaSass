@@ -73,6 +73,7 @@ const [msg, setMsg] = useState("")
                   console.log("RES->", res)
                 if (res.ok)
                 {
+                    // mensaje de unos segundos
                     setMsg("Compra enviada ok")
                     okMessage(true)
                     
@@ -80,7 +81,7 @@ const [msg, setMsg] = useState("")
                 }
           })
       } catch (error) {
-        console.error("ERROR AL MANDAR CARRIDO:", error)
+        console.error("ERROR AL PROCESAR CARRITO:", error)
         setMsg("Se ha producido un error al guardar los datos")
         okMessage(false)
       }

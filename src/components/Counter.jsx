@@ -4,7 +4,7 @@ import Button from './Button'
 import CartContext from '../context/CartContext'
 import Box from './Box'
 
-
+// contador del carrito modal
 function Counter({prod, 
       color = "primary", 
       variant = "solid",
@@ -15,7 +15,7 @@ function Counter({prod,
     const [contador, setContador] = useState(0)
 
     const prodEncontrado = shoppCart.find(obj => obj.prod._id === prod._id)
-    //console.log("prodencontrado", prodEncontrado)
+    
     const increment = () => {
         setContador(contador + 1)
         cartModif(prod, contador + 1)

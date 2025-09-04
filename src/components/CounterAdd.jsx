@@ -5,7 +5,7 @@ import CartContext from '../context/CartContext'
 import Box from './Box'
 import { faTrash, faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
+// contador para el producto, agrega y se desactiva, permite eliminacion
 function CounterAdd(prod) { // prod = { aa=xx, bb=xx, ...}
     const { cartModif , shoppCart  } = useContext(CartContext)
     const [contador, setContador] = useState(0)

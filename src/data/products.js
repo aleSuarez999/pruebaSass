@@ -1,3 +1,4 @@
+///usado inicialmente antes de mockapi
 export const products = 
 [
   {
