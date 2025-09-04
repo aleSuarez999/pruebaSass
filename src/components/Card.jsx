@@ -20,7 +20,7 @@ function Card({
 
   const navigate = useNavigate();
   const {increment} = useContext(CartContext)
-  console.log(img)
+  //Verifico path console.log(img)
   return (
   
           <Box className="card__body">
