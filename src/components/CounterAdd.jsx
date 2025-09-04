@@ -30,7 +30,7 @@ function CounterAdd(prod) { // prod = { aa=xx, bb=xx, ...}
     
 
   const increment = () => {
-    alert("llega aca")
+          alert("llega aca")
           setContador(contador + 1)
           cartModif(prod, contador + 1)
           setaddMessage("Agregado al Carrito")
@@ -50,7 +50,7 @@ function CounterAdd(prod) { // prod = { aa=xx, bb=xx, ...}
         (contador == 0) ? 
          <Button label="Agregar al Carrito" 
             id="suma"
-              onClick={increment}  
+              onClick={() => alert("Test click")}
               disabled={contador > 0} 
           />
           :
