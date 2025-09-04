@@ -102,6 +102,7 @@ function Alta() {
     const [mostrarMensaje, setMostrarMensaje] = useState(false)
     const [enviado, setEnviado] = useState("")
     const [msg, setMsg] = useState("")
+    const [preview, setPreview] = useState(null) // estado para la imagen
 
    useEffect(() => {
       if (mostrarMensaje) {
@@ -138,7 +139,16 @@ function Alta() {
         }
     }
   */
- 
+    // Captura del cambio de archivo
+const handleFileChange = e => {
+    const file = e.target.files[0]
+    if (file) {
+      setPreview(URL.createObjectURL(file)) // crea una URL temporal
+    } else {
+      setPreview(null)
+    }
+    onChange(e) // para no perder el onchange
+  }
       const handleSubmit = e => {
         e.preventDefault()
         if (Object.values(errors).every( val => !val )) {
@@ -215,13 +225,21 @@ const okMessage = (estado) => {
         <Box className='product__grid'>
              <Form
                 values={values} 
-                onChange={onChange} 
+                onChange={e => e.target.name === "image" ? handleFileChange(e) : onChange(e)}
                 onBlur={onBlur} 
                 resetForm={resetForm} 
                 onSubmit={handleSubmit}
                 inputsArray={inputsArray} 
                 errors={errors}
                    />
+                 {preview && (
+                        <img
+                            src={preview}
+                            alt="Vista previa"
+                            id="imgPreview"
+                            style={{ maxWidth: "200px", marginTop: "10px" }}
+                        />
+                        )}
         </Box>
     </Container>
   )
