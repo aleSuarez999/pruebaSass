@@ -6,7 +6,7 @@ export const useForm = (initialValues, validations) => {
     const [errors, setErrors ] = useState({})
 
       const onChange = ({ target }) => {
-        console.log(target)
+        //console.log(target)
         setValues({
             ...values,
             [target.name]: target.type === "checkbox" ? target.checked : target.type === "file" ? target.files[0] : target.value
