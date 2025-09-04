@@ -124,21 +124,7 @@ function Alta() {
         shortDescription: "",
         largeDescription: ""
     }, validationsUpload)
-/*
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-
-     //   if (validationsUpload.every(input => input.validation(values[input.name])))
-        if (Object.values(errors).every( val => !val )) 
-            preSubmit(e)
-        else
-        {
-            setMsg("Error en el formulario, verifique los campos por favor")
-            okMessage(false)
-        }
-    }
-  */
     // Captura del cambio de archivo
 const handleFileChange = e => {
     const file = e.target.files[0]

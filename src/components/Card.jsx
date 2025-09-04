@@ -22,17 +22,22 @@ function Card({
   const {increment} = useContext(CartContext)
   //Verifico path console.log(img)
   return (
-  
+      <>
+         
           <Box className="card__body">
+             {(prod.freeDelivery) && <img src="./src/img/freeDelivery01.png" className='freeDelivery'/>}
               <img src={image ? image : img} className="card__img" alt="..." />
+            
               <Text as="p" className="card__title">{name}</Text>
               <Text as="p" className="card__category">Categoria: {category}</Text> 
-              <Text as="p" className="precio">{`$ ${amount}`} </Text>
+              <Text as="p" className="precio">{`$ ${amount}`}   </Text>
               <Box className="d-flex counter__container jcc">
                 <CounterAdd prod={prod} />
+                
+              
               </Box>
           </Box>
-    
+    </>
   )
 }
 
