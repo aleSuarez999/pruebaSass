@@ -50,7 +50,7 @@ function CounterAdd(prod) { // prod = { aa=xx, bb=xx, ...}
         (contador == 0) ? 
          <Button label="Agregar al Carrito" 
             id="suma"
-              onClick={() => alert("Test click")}
+              onClick={increment}
               disabled={contador > 0} 
           />
           :
