@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router'
 import CartContext from '../context/CartContext';
 import CounterAdd from './CounterAdd';
 import Box from './Box';
-import freeDelivery from '../assets/freeDelivery'
+import freeDelivery from '../assets/freeDelivery01.png'
 
 
 function Card({
