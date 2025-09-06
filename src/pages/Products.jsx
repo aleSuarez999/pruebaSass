@@ -8,6 +8,7 @@ import Box from '../components/Box'
 
 export default function Products() {
    const {products} = useContext(CartContext)
+  const [loading, setLoading] = useState(true)
 
   const {category} = useParams() 
   
@@ -17,6 +18,10 @@ export default function Products() {
     setCateProds(products.filter((data) => data.brand === category))
     
   }, [category])
+
+  if (loading) {
+    return <div>Cargando producto...</div>
+  }
 
  return (
   <>

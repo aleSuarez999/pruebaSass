@@ -15,6 +15,21 @@ export const getProducts = async () => {
     
 }
 
+export const getProductById = async (id) => {
+    try {
+        const resp = await axiosInstance.get(`products/${id}`)
+       // console.log(resp)
+        if (resp.data.ok)
+        {
+            //console.info("trajo el producto", resp.data.products)
+            return resp.data.products
+        }
+    } catch (error) {
+        console.error('Error al obtener producto:', error)
+        throw error
+    }
+    
+}
 export const postContact = async (body) => {
     //console.info("apiMongo postContact")
     try {

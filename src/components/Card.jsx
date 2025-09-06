@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import Text from './Text'
-import { useNavigate } from 'react-router'
+import { NavLink, useNavigate } from 'react-router'
 import CartContext from '../context/CartContext';
 import CounterAdd from './CounterAdd';
 import Box from './Box';
@@ -8,7 +8,7 @@ import freeDelivery from '../assets/freeDelivery01.png';
 
 
 function Card({
-    id,
+    id_,
     name,
     brand,
     image,
@@ -28,8 +28,10 @@ function Card({
          
           <Box className="card__body">
              {(prod.freeDelivery) && <img src={freeDelivery} className='freeDelivery'/>}
-              <img src={image ? image : img} className="card__img" alt="..." />
-            
+              <NavLink to={`/products/${prod._id}`} >
+                <img src={image ? image : img} className="card__img" alt="..." />
+              
+              </NavLink>
               <Text as="p" className="card__title">{name}</Text>
               <Text as="p" className="card__category">Categoria: {category}</Text> 
               <Text as="p" className="precio">{`$ ${amount}`}   </Text>

@@ -6,9 +6,25 @@ import CartContext from '../context/CartContext'
 import Box from '../components/Box'
 
 export default function Home() {
-  
+  const [loading, setLoading] = useState(true)
   const {products} = useContext(CartContext)
- 
+  
+  useEffect(() => {
+  // setLoading(true)
+    
+  }, [])
+  
+  if (products.length > 0)
+  {
+    //console.log(products)  
+    //setLoading(false)
+  }
+
+  if (loading) {
+    //return <div>Cargando productos...</div>
+  }
+  
+
   return (
     
       <>    
