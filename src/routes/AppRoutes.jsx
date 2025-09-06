@@ -8,6 +8,7 @@ import Layout from "../layouts/Layout"
 import Products from "../pages/Products"
 import ProductDetail from "../pages/ProductDetail"
 import MensajesRecibidos from "../pages/MensajesRecibidos"
+import CardDetail from "../components/CardDetail"
 
 function AppRoutes() {
   return (
@@ -22,7 +23,7 @@ function AppRoutes() {
                 <Route path="/MensajesRecibidos" element={<MensajesRecibidos />} />
 
                 <Route path="/category/:category" element={<Products />} />
-                <Route path="/products/:id" element={<ProductDetail />} />
+                <Route path="/products/:id" element={<CardDetail />} />
             </Route>
         </Routes>
     </BrowserRouter> 

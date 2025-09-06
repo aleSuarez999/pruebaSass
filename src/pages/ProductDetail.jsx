@@ -41,7 +41,7 @@ function ProductDetail() {
     <Box style={{ display: 'flex', gap: '20px', padding: '20px' }}>
       <div style={{ flex: 1 }}>
         <h1>{producto.name}</h1>
-        <p><strong>Precio:</strong> ${producto.amount}</p>
+        <Text as="p" data={`<strong>Precio:</strong> ${producto.amount}>`} />
         <p><strong>Descripción:</strong> {producto.description}</p>
         <p><strong>Categoría:</strong> {producto.category}</p>
         <p><strong>Marca:</strong> {producto.brand}</p>

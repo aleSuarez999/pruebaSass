@@ -26,7 +26,7 @@ export default function Home() {
   return (
     
       <>    
-        <Text as="h2" >Productos</Text>
+        <Text as="h2" className="mt-7" >Productos</Text>
         
         <div className='product__grid'>
         {

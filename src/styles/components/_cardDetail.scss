@@ -1,0 +1,50 @@
+@use "sass:map";
+@use "sass:color";
+@use "../abstracts/variables" as *;
+//@use "../utils/mixins" as *;
+
+
+.cardDetail__container{
+    padding: 0.5rem;
+    margin: 1rem;
+    
+    display: flex;
+//    width: $cardWidth * 3;
+    border-radius:  1rem 0 1rem  0;
+    font-size: 1.1rem;
+    border: 1px dotted $color-primary;
+    overflow: hidden; // sobra color por abajo
+    background-color: color.adjust($color-card-bg, $lightness: 35%);
+    background-color: $color-card-bg;
+    cursor: pointer;
+
+    .cardDetail__body{
+        display: flex;
+        flex-direction: column;
+        padding: 0 0.5rem;
+        padding-top: 0.5rem;
+        padding-bottom: 2rem;
+    }
+    .cardDetail__img__container{
+        max-width: 50%;
+        overflow: hidden;
+        padding-top: 0.5rem;
+    }
+
+    .cardDetail__img{
+        position: relative;
+        border-radius: 1rem 0;
+        left: 0;
+        max-width: 100%;
+        max-height: 100%;
+        align-self: center;
+        overflow: hidden;
+        
+        background-color: white;
+    }
+    .cardDetail__title{
+        margin: 0.2rem;
+    }
+
+    
+ }
