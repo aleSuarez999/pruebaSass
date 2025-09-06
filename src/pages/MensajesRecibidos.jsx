@@ -3,24 +3,27 @@ import Text from '../components/Text'
 import {getMessages} from "../utils/apiMongo"
 import Box from '../components/Box'
 import Button from '../components/Button'
+import loadingImg from '../img/loading.gif'
+
 export default function Products() {
+    const [mensajes, setMensajes] = useState([])
+    const [loading, setLoading] = useState(true)
 
 
-  const [mensajes, setMensajes] = useState([])
-
-
-  useEffect(() => {
-      getMessages()
+     
+    useEffect(() => {
+    getMessages()
       .then(data => setMensajes(data.messages))
       .catch(err => console.error(err))
       .finally(() => {
-    
+          setLoading(false)
         console.log(mensajes)
       })
-  
-    
   }, [])
-
+  
+    if (loading) {
+      return <div><img src={loadingImg} /></div>
+    }   
 
  return (
    <Box className="messages-container">

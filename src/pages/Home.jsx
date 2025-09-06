@@ -4,25 +4,23 @@ import Card from '../components/Card'
 import { useContext, useEffect, useState } from 'react'
 import CartContext from '../context/CartContext'
 import Box from '../components/Box'
-
+import loadingImg from '../img/loading.gif'
 export default function Home() {
   const [loading, setLoading] = useState(true)
   const {products} = useContext(CartContext)
   
   useEffect(() => {
-  // setLoading(true)
+    if (products.length > 0)
+      setLoading(false)
     
-  }, [])
+  }, [products])
   
-  if (products.length > 0)
-  {
-    //console.log(products)  
-    //setLoading(false)
-  }
-
   if (loading) {
-    //return <div>Cargando productos...</div>
-  }
+    return <div><img src={loadingImg} /></div>
+  }  
+ 
+
+
   
 
   return (
