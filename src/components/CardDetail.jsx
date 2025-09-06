@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Text from './Text'
 import Box from './Box'
-import { useParams } from 'react-router'
+import { NavLink, useParams } from 'react-router'
 import { getProductById } from '../utils/apiMongo'
 import Container from './Container'
 
@@ -41,7 +41,7 @@ function CardDetail() {
 
   return (
       <Container as="main">
-        <Text as="h2" className="">Detalle </Text>
+        <Text as="h2" className=""><NavLink to="/" >Productos</NavLink> / Detalle </Text>
        
         <Box className='product__grid'>
           <div  className="cardDetail__container col-12 d-flex" >
