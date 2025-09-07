@@ -7,45 +7,55 @@ import Box from '../components/Box'
 import { postContact } from '../utils/apiMongo'
 import MensajeEnvio from '../components/MensajeEnvio'
 
-    const campos = [
-                {
-                    name: "name",
-                    label: "Nombre",
-                    type: "text",
-                    validation: value => value.length > 2,
-                    errorText: "El nombre es incorrecto"
-                }, 
-                {
-                    name:"email",
-                    label: "E-mail",
-                    type: "email",
-                    validation: value => {
-                        const regexp = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)
-                        return regexp.test(value);
-                    },
-                    errorText: "El email no tiene el formato correcto"
-                }, 
-                {
-                    name:"subject",
-                    label: "Asunto",
-                    type: "text",
-                    validation: value => value.length > 2,
-                    errorText: "El asunto es obligatorio"
-                }, 
-                {
-                    name:"message",
-                    label: "Mensaje",
-                    type: "textarea",
-                    validation: value => value.length > 10,
-                    errorText: "Ingrese un mensaje"
-                }
+const validationsUpload = {
+    name: {
+        validation: value => value.length > 2, 
+        errorText: "El nombre del producto es incorrecto"
+    },
+    email: {
+		validation: value => {
+			const regexp = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)
+			return regexp.test(value);
+		},
+		errorText: "El email no tiene el formato correcto"
+    },
+    subject: {
+        validation: value => value.length > 2,
+        errorText: "El asunto es obligatorio"
+    },
+    message: {
+        validation: value => value.length > 10,
+        errorText: "Ingrese un mensaje"
+    }
+}
 
-            ]
 
+const inputsArray=[
+    {
+        name: "name",
+        type: "text",
+        label: "Nombre"
+    },
+    {
+        name: "email",
+        type: "email",
+        label: "EMail"
+    },
+    {
+        name: "subject",
+        type: "text",
+        label: "Asunto"
+    },
+    {
+        name: "message",
+        type: "text",
+        label: "Mensaje"
+    },
+]
 function ContactUs() {
 
 
-    const {values, onChange, onBlur,errors, resetForm, onSubmit} = useForm({ name: "", email: "", subject: "", message: "" }, campos)
+    const {values, onChange, onBlur,errors, resetForm, onSubmit} = useForm({ name: "", email: "", subject: "", message: "" }, validationsUpload)
  
     const [enviado, setEnviado] = useState("")
     const [msg, setMsg] = useState("")
@@ -99,12 +109,17 @@ function ContactUs() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-
-        if (campos.every(input => input.validation(values[input.name])))
-            preSubmit(e)
-        else
-        {
-            okMessage(false)
+        if (Object.values(errors).every( val => !val )) {
+            postContact(values)
+                .then(() => {
+                        
+                        okMessage(true)
+                        setMsg("Producto enviado ok")
+                })
+                .then(() => resetForm())
+                .catch( err => console.error(err) )
+        } else {
+            console.log("Formulario inválido")
         }
     }
     
@@ -120,7 +135,7 @@ function ContactUs() {
                 onChange={onChange} 
                 onBlur={onBlur} 
                 onSubmit={handleSubmit}
-                inputsArray={campos} 
+                inputsArray={inputsArray} 
                 errors={errors}
                 />
         </Box>

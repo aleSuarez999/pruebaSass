@@ -5,6 +5,7 @@ import CartContext from '../context/CartContext';
 import CounterAdd from './CounterAdd';
 import Box from './Box';
 import freeDelivery from '../assets/freeDelivery01.png';
+import CounterAddetail from './CounterAddDetail';
 
 
 function Card({
@@ -36,7 +37,7 @@ function Card({
               <Text as="p" className="card__category">Categoria: {category}</Text> 
               <Text as="p" className="precio">{`$ ${amount}`}   </Text>
               <Box className="d-flex counter__container jcc">
-                <CounterAdd prod={prod} />
+                <CounterAddetail prod={prod} />
                 
               
               </Box>

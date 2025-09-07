@@ -4,7 +4,8 @@ import Box from './Box'
 import { NavLink, useParams } from 'react-router'
 import { getProductById } from '../utils/apiMongo'
 import Container from './Container'
-
+import loadingImg from '../img/loading.gif'
+import CounterAddetail from './CounterAddDetail'
 
 function CardDetail() {
 
@@ -31,9 +32,11 @@ function CardDetail() {
   
     }, [])
     
+     
      if (loading) {
-      return <div>Cargando producto...</div>
-    }
+       return <div><img src={loadingImg} /></div>
+     }  
+    
   
     if (!prod) {
       return <div>Producto no encontrado</div>
@@ -97,7 +100,7 @@ function CardDetail() {
             
             </Box>
           </div>
-
+          <CounterAddetail prod={prod} />
         </Box>
       </Container>
   )

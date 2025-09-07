@@ -17,7 +17,9 @@ function Navbar() {
   return (
     <header className='header__content' >  
         <div className='header__container'>
+          <NavLink to="/" >
             <img src={brandImage} height="55"  />
+            </NavLink>
             <NavLink to="/" >
                
                 <Text as="h1" > Juguetería Cósmica</Text>
